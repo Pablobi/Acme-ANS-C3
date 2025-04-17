@@ -1,0 +1,9 @@
+technician.involves.list.title = Lista de Tareas
+
+technician.task.list.label.taskType = Tipo de tarea:
+technician.task.list.label.priority = Prioridad:
+technician.task.list.label.estimatedDuration = Duración estimada:
+
+technician.involves.form.title = Tarea en Registro de Mantenimiento
+technician.involves.form.button.create = Añadir tarea a registro de mantenimiento
+technician.involves.form.label.task = Tareas:

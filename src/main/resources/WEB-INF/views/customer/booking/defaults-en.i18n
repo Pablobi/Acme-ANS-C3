@@ -1,0 +1,34 @@
+customer.booking.list.title = Listing of bookings
+
+customer.booking.list.label.locatorCode = Locator Code:
+customer.booking.list.label.purchaseMoment = Purchase Moment:
+customer.booking.list.label.travelClass = Travel Class:
+customer.booking.list.label.price = Price:
+customer.booking.list.label.lastCreditCardDigits = 4 Last Digits of the Credit Card used to purchase the Booking:
+customer.booking.list.label.customer = Customer:
+customer.booking.list.label.flight = Flight:
+
+
+customer.booking.list.button.create = Create
+
+customer.booking.form.title = Booking
+
+customer.booking.form.label.locatorCode = Locator Code:
+customer.booking.form.label.purchaseMoment = Purchase Moment:
+customer.booking.form.label.travelClass = Travel Class:
+customer.booking.form.label.price = Price:
+customer.booking.form.label.lastCreditCardDigits = 4 Last Digits of the Credit Card used to purchase the Booking:
+customer.booking.form.label.customer = Customer:
+customer.booking.form.label.flight = Flight:
+customer.booking.form.button.passengers = Passengers:
+
+customer.booking.form.button.update = Update
+customer.booking.form.button.delete = Delete
+customer.booking.form.button.create = Create booking
+customer.booking.form.button.passengers.add = Add Passenger
+customer.booking.form.button.publish = Publish
+
+customer.booking.publish.no-passengers = A booking cannot be published without passengers
+customer.booking.publish.no-passengers-published = A booking cannot have not published passengers
+customer.booking.publish.no-card-nibble-stored = A booking cannot be published if the credit card hasn't been stored
+customer.booking.update.published-error = A published booking cannot be updated

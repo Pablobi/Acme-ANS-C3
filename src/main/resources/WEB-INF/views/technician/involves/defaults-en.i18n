@@ -1,0 +1,9 @@
+technician.involves.list.title = Listing of Tasks
+
+technician.task.list.label.taskType = Task type:
+technician.task.list.label.priority = Priority:
+technician.task.list.label.estimatedDuration = Estimated duration:
+
+technician.involves.form.title = Task in Maintenance Record
+technician.involves.form.button.create = Add task to maintenance record
+technician.involves.form.label.task = Tasks:

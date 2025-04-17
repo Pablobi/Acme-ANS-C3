@@ -1,0 +1,33 @@
+key,locatorCode,purchaseMoment,travelClass,lastCreditCardDigits,draftMode,key:customer,key:flight
+#Base Entity
+booking-01,1234567,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+#LocatorCode
+booking-02,123456,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-03,12345678,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-04,A06GSS,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-05,V1ZD36V,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+#PurchaseMoment
+booking-06,234567,2000/01/01 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-07,345678,2000/01/01 00:01,ECONOMY,4999,true,customer-01,flight-01
+booking-08,456789,2022/07/29 23:59,ECONOMY,4999,true,customer-01,flight-01
+booking-09,567890,2022/07/30 00:00,ECONOMY,4999,true,customer-01,flight-01
+#TravelClass
+booking-10,6789012,2012/07/02 00:00,BUSINESS,4999,true,customer-01,flight-01
+#Price
+booking-11,7890123,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-12,8901234,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-13,9012345,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+booking-14,9876543,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-01
+#LastCreditCardDigits
+booking-15,8765410,2012/07/02 00:00,ECONOMY,0000,true,customer-01,flight-01
+booking-16,7654321,2012/07/02 00:00,ECONOMY,0001,true,customer-01,flight-01
+booking-17,6543210,2012/07/02 00:00,ECONOMY,9998,true,customer-01,flight-01
+booking-18,5432109,2012/07/02 00:00,ECONOMY,9999,true,customer-01,flight-01
+#key:customer
+booking-19,4321098,2012/07/02 00:00,ECONOMY,4999,true,customer-02,flight-01
+booking-20,3210987,2012/07/02 00:00,ECONOMY,4999,true,customer-03,flight-01
+#key:flight
+booking-21,2109876,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-02
+booking-22,1098765,2012/07/02 00:00,ECONOMY,4999,true,customer-01,flight-03
+#draftMode
+booking-23,8349393,2012/07/02 00:00,ECONOMY,4999,false,customer-01,flight-03

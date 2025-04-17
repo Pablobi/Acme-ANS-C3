@@ -1,0 +1,23 @@
+technician.maintenance-record.list.title = Lista de Registros de Mantenimiento
+
+technician.maintenance-record.list.label.maintenanceMoment = Momento de mantenimiento:
+technician.maintenance-record.list.label.maintenanceStatus = Estado del mantenimiento:
+technician.maintenance-record.list.label.nextInspectionDate = Fecha de próxima inspección:
+technician.maintenance-record.list.button.create = Crear Registro de Mantenimiento
+
+technician.maintenance-record.form.title = Registro de Mantenimiento
+
+technician.maintenance-record.form.label.maintenanceMoment = Momento de mantenimiento:
+technician.maintenance-record.form.label.maintenanceStatus = Estado del mantenimiento:
+technician.maintenance-record.form.label.nextInspectionDate = Fecha de próxima inspección:
+technician.maintenance-record.form.label.estimatedCost = Coste estimado:
+technician.maintenance-record.form.label.draftMode = Modo borrador:
+technician.maintenance-record.form.label.notes = Notas:
+technician.maintenance-record.form.label.aircraft = Avión:
+technician.maintenance-record.form.label.technician = Técnico:
+
+technician.maintenance-record.form.button.tasks = Tareas
+technician.maintenance-record.form.button.addTasks = Añadir Tareas
+technician.maintenance-record.form.button.update = Actualizar Registro de Mantenimiento
+technician.maintenance-record.form.button.create = Crear Registro de Mantenimiento
+technician.maintenance-record.form.button.publish = Publicar Registro de Mantenimiento

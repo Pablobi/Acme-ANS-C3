@@ -1,0 +1,78 @@
+# menu-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# master.menu.anonymous #######################################################
+
+master.menu.anonymous = Anonymous
+
+master.menu.anonymous.favourite-link-alevarmun1 = **01**13: Vargas Muñiz, Alejandro
+master.menu.anonymous.favourite-link-pablobi = 2951****R: Bermúdez Imaz, Pablo
+master.menu.anonymous.favourite-link-javclamar = **85**92: Clavijo Martínez, Javier
+master.menu.anonymous.favourite-link-AngSanRui = 4599****: Sánchez Ruiz, Ángel
+master.menu.anonymous.favourite-link-RubLopExp = **63**98: López Expósito, Rubén
+
+# master.menu.administrator ###################################################
+
+master.menu.administrator = Administrador
+master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.list-aircrafts = Ver aviones
+master.menu.administrator.populate-db-initial = Poblar BD (inicial)
+master.menu.administrator.populate-db-sample = Poblar BD (ejemplos)
+master.menu.administrator.shut-system-down = Parar el sistema
+master.menu.administrator.list.airport = Lista de aeropuertos
+
+# master.menu.provider ########################################################
+
+master.menu.provider = Proveedor
+master.menu.provider.favourite-link = Enlace favorito
+
+# master.menu.consumer ##########################################################
+
+master.menu.consumer = Consumidor
+master.menu.consumer.favourite-link = Enlace favorito
+
+# master.menu.technician ##########################################################
+
+master.menu.technician = Técnico
+master.menu.technician.list-my-maintenance-records = ver mis registros de mantenimiento
+master.menu.technician.list-my-tasks = ver mis tareas
+
+# master.menu.customer ##########################################################
+
+master.menu.customer = Cliente
+master.menu.customer.list-bookings = Ver reservas
+master.menu.customer.list-passenger = Ver pasajeros
+
+# master.menu.flightCrewMember ##########################################################
+
+master.menu.flightCrewMember = Miembro de la tripulación de vuelo
+master.menu.flightCrewMember.list-completedFlightAssignments = Listar encargos de vuelo completados
+master.menu.flightCrewMember.list-uncompletedFlightAssignments = Listar encargos de vuelo no completados
+master.menu.flightCrewMember.list-activityLog = Listar registros de actividad
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Manager
+master.menu.manager.list-flights = Ver vuelos
+
+# master.menu.agent ##########################################################
+
+master.menu.agent = Agente
+master.menu.agent.list-completed = Reclamaciones resueltas
+master.menu.agent.list-pending = Reclamaciones pendientes
+
+# master.menu.user-account ####################################################
+
+master.menu.user-account = Cuenta
+master.menu.user-account.general-profile = Perfil general
+master.menu.user-account.become-provider = Hacerse proveedor
+master.menu.user-account.provider-profile = Perfil de proveedor
+master.menu.user-account.become-consumer = Hazte consumidor
+master.menu.user-account.consumer-profile = Perfil de consumidor

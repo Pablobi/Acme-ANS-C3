@@ -1,0 +1,80 @@
+
+package acme.features.customer.passengers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import acme.client.components.models.Dataset;
+import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
+import acme.entities.passengers.Passenger;
+import acme.realms.customers.Customer;
+
+@GuiService
+public class CustomerPassengerPublishService extends AbstractGuiService<Customer, Passenger> {
+
+	@Autowired
+	private CustomerPassengerRepository repository;
+
+
+	@Override
+	public void authorise() {
+		boolean status;
+		int passengerId;
+		Passenger passenger;
+		Customer customer;
+
+		passengerId = super.getRequest().getData("id", int.class);
+		passenger = this.repository.findPassengerById(passengerId);
+
+		customer = passenger.getCustomer();
+
+		status = passenger.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		super.getResponse().setAuthorised(status);
+	}
+
+	@Override
+	public void load() {
+		Passenger passenger;
+		int id;
+
+		id = super.getRequest().getData("id", int.class);
+		passenger = this.repository.findPassengerById(id);
+
+		super.getBuffer().addData(passenger);
+	}
+
+	@Override
+	public void bind(final Passenger passenger) {
+		Integer customerId;
+		Customer customer;
+
+		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		customer = this.repository.findCustomerById(customerId);
+
+		super.bindObject(passenger, "name", "email", "passport", "dateOfBirth");
+		passenger.setCustomer(customer);
+	}
+
+	@Override
+	public void validate(final Passenger passenger) {
+		boolean status;
+		status = passenger.isDraftMode();
+		super.state(status, "*", "customer.passenger.update.draft-mode");
+		;
+	}
+
+	@Override
+	public void perform(final Passenger passenger) {
+		passenger.setDraftMode(false);
+		this.repository.save(passenger);
+	}
+
+	@Override
+	public void unbind(final Passenger passenger) {
+		Dataset dataset;
+		dataset = super.unbindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds");
+
+		super.getResponse().addData(dataset);
+	}
+
+}

@@ -1,0 +1,26 @@
+flight-crew-member.flight-assignment.list.title = Listado de encargos de vuelo
+
+flight-crew-member.flight-assignment.list.label.duty = Deber:
+flight-crew-member.flight-assignment.list.label.lastUpdate = Última actualización:
+flight-crew-member.flight-assignment.list.label.currentStatus = Estado actual:
+flight-crew-member.flight-assignment.list.label.remarks = Comentarios:
+flight-crew-member.flight-assignment.list.label.flightCrewMember = Miembro de la tripulación de vuelo:
+flight-crew-member.flight-assignment.list.label.leg = Tramo:
+
+flight-crew-member.flight-assignment.list.button.create = Crear
+
+
+
+flight-crew-member.flight-assignment.form.title = Encargo de vuelo
+
+flight-crew-member.flight-assignment.form.label.duty = Deber:
+flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización:
+flight-crew-member.flight-assignment.form.label.currentStatus = Estado actual:
+flight-crew-member.flight-assignment.form.label.remarks = Comentarios:
+flight-crew-member.flight-assignment.form.label.flightCrewMember = Miembro de la tripulación de vuelo:
+flight-crew-member.flight-assignment.form.label.leg = Tramo:
+
+flight-crew-member.flight-assignment.form.button.update = Actualizar encargo de vuelo
+flight-crew-member.flight-assignment.form.button.publish = Publicar encargo de vuelo
+flight-crew-member.flight-assignment.form.button.create = Crear encargo de vuelo
+flight-crew-member.flight-assignment.form.button.activityLogs = Listar registro de actividad

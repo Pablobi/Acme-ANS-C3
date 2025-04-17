@@ -1,0 +1,75 @@
+key,name,iataCode,operationalScope,city,country,website,email,contactPhoneNumber
+#base entity
+airport-01,Lorem ipsum dolor sit ame,AAC,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#name variations
+airport-02,L,AAD,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-03,Lo,AAE,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",AAF,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",AAG,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-06,โลเร็ม อิปซัม,AAH,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-07,لوريم إيبسوم,AAI,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-08,洛伦·伊普森,AAJ,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-09,<marquee>Hacked</marquee>,AAK,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-10,<script>alert(‘Hacked!’);</script>,AAL,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-11,' or 'A' = 'A,AAM,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#code variations
+airport-12,Lorem ipsum dolor sit ame,ABC,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-13,Lorem ipsum dolor sit ame,AXW,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-14,Lorem ipsum dolor sit ame,YHN,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-15,Lorem ipsum dolor sit ame,RTS,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-16,Lorem ipsum dolor sit ame,ZZZ,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#operationalScope variations
+airport-17,Lorem ipsum dolor sit ame,AAN,DOMESTIC,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-18,Lorem ipsum dolor sit ame,AAO,REGIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#city variations
+airport-19,Lorem ipsum dolor sit ame,AAP,INTERNATIONAL,L,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-20,Lorem ipsum dolor sit ame,AAQ,INTERNATIONAL,Lo,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-21,Lorem ipsum dolor sit ame,AAR,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin",Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-22,Lorem ipsum dolor sit ame,AAS,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscing",Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-23,Lorem ipsum dolor sit ame,AAT,INTERNATIONAL,โลเร็ม อิปซัม,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-24,Lorem ipsum dolor sit ame,AAU,INTERNATIONAL,لوريم إيبسوم,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-25,Lorem ipsum dolor sit ame,AAV,INTERNATIONAL,洛伦·伊普森,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-26,Lorem ipsum dolor sit ame,AAW,INTERNATIONAL,<marquee>Hacked</marquee>,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-27,Lorem ipsum dolor sit ame,AAX,INTERNATIONAL,<script>alert(‘Hacked!’);</script>,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-28,Lorem ipsum dolor sit ame,AAY,INTERNATIONAL,' or 'A' = 'A,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#country variations
+airport-29,Lorem ipsum dolor sit ame,AAZ,INTERNATIONAL,Lorem ipsum dolor sit ame,L,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-30,Lorem ipsum dolor sit ame,ABA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lo,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-31,Lorem ipsum dolor sit ame,ACA,INTERNATIONAL,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscin",http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-32,Lorem ipsum dolor sit ame,ADA,INTERNATIONAL,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur adipiscing",http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-33,Lorem ipsum dolor sit ame,AEA,INTERNATIONAL,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-34,Lorem ipsum dolor sit ame,AFA,INTERNATIONAL,Lorem ipsum dolor sit ame,لوريم إيبسوم,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-35,Lorem ipsum dolor sit ame,AHA,INTERNATIONAL,Lorem ipsum dolor sit ame,洛伦·伊普森,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-36,Lorem ipsum dolor sit ame,AIA,INTERNATIONAL,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-37,Lorem ipsum dolor sit ame,AJA,INTERNATIONAL,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+airport-38,Lorem ipsum dolor sit ame,AKA,INTERNATIONAL,Lorem ipsum dolor sit ame,' or 'A' = 'A,http://lorem.com/ipsum,passenger@mail.com,+441279358395
+#website variations
+airport-39,Lorem ipsum dolor sit ame,ALA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,ftp://a,passenger@mail.com,+441279358395
+airport-40,Lorem ipsum dolor sit ame,AMA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,ftp://a.b,passenger@mail.com,+441279358395
+airport-41,Lorem ipsum dolor sit ame,ANA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",passenger@mail.com,+441279358395
+airport-42,Lorem ipsum dolor sit ame,AOA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",passenger@mail.com,+441279358395
+airport-43,Lorem ipsum dolor sit ame,APA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,https://www.lorem-ipsum.org,passenger@mail.com,+441279358395
+airport-44,Lorem ipsum dolor sit ame,AQA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,ftp://www.lorem-ipsum.org,passenger@mail.com,+441279358395
+airport-45,Lorem ipsum dolor sit ame,ARA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html,passenger@mail.com,+441279358395
+airport-46,Lorem ipsum dolor sit ame,ASA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html#dolor,passenger@mail.com,+441279358395
+airport-47,Lorem ipsum dolor sit ame,ATA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org?a=1&b=2,passenger@mail.com,+441279358395
+airport-48,Lorem ipsum dolor sit ame,AUA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org?,passenger@mail.com,+441279358395
+airport-49,Lorem ipsum dolor sit ame,AVA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org?a,passenger@mail.com,+441279358395
+airport-50,Lorem ipsum dolor sit ame,AWA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org?a&b,passenger@mail.com,+441279358395
+airport-51,Lorem ipsum dolor sit ame,AXA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org/,passenger@mail.com,+441279358395
+airport-52,Lorem ipsum dolor sit ame,AYA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org/a,passenger@mail.com,+441279358395
+airport-53,Lorem ipsum dolor sit ame,AZA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org/a/b,passenger@mail.com,+441279358395
+airport-54,Lorem ipsum dolor sit ame,BAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org/a/b?,passenger@mail.com,+441279358395
+airport-55,Lorem ipsum dolor sit ame,CAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://example.org/a/b?a&b,passenger@mail.com,+441279358395
+#email variations
+airport-56,Lorem ipsum dolor sit ame,DAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,a@b.e,+441279358395
+airport-57,Lorem ipsum dolor sit ame,EAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,a@b.es,+441279358395
+airport-58,Lorem ipsum dolor sit ame,FAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,a@b.esx,+441279358395
+airport-59,Lorem ipsum dolor sit ame,GAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,+441279358395
+airport-60,Lorem ipsum dolor sit ame,HAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,+441279358395
+#contactPhoneNumber variations
+airport-61,Lorem ipsum dolor sit ame,IAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,999999
+airport-62,Lorem ipsum dolor sit ame,JAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,000000000000000
+airport-63,Lorem ipsum dolor sit ame,KAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+123456
+airport-64,Lorem ipsum dolor sit ame,LAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,123456
+airport-65,Lorem ipsum dolor sit ame,MAA,INTERNATIONAL,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,passenger@mail.com,+001234567890123

@@ -1,0 +1,45 @@
+key,name,pictureLink,avgDwellTime,promotionCode,moneyDiscountedPercentage
+#base entity
+service-00,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,60.00,JOJR-25,50.00
+#name - standard variation
+service-01,L,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/airplane.jpg?csf=1&web=1&e=LOv89I,60.00,ZIPE-25,50.00
+service-02,Lo,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/airplane.jpg?csf=1&web=1&e=LOv89I,60.00,FAMW-25,50.00
+service-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/airplane.jpg?csf=1&web=1&e=LOv89I,60.00,KTRY-25,50.00
+service-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/airplane.jpg?csf=1&web=1&e=LOv89I,60.00,ADRE-25,50.00
+service-05,โลเร็ม อิปซัม,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/airplane.jpg?csf=1&web=1&e=LOv89I,60.00,FGOJ-25,50.00
+service-06,لوريم إيبسوم,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/bussiness%20woman.jpg?csf=1&web=1&e=aaZw4Q,60.00,OBFH-25,50.00
+service-07,洛伦·伊普森,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/bussiness%20woman.jpg?csf=1&web=1&e=aaZw4Q,60.00,LIMS-25,50.00
+service-08,Hacked,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/bussiness%20woman.jpg?csf=1&web=1&e=aaZw4Q,60.00,BCGZ-25,50.00
+service-09,alert(‘Hacked!’);,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/bussiness%20woman.jpg?csf=1&web=1&e=aaZw4Q,60.00,DGHK-25,50.00
+service-10,' or 'A' = 'A,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/bussiness%20woman.jpg?csf=1&web=1&e=aaZw4Q,60.00,AMIP-25,50.00
+#pictureLink - standard variation
+service-11,Lorem ipsum dolor sit ame,ftp://a,60.00,EYSI-25,50.00
+service-12,Lorem ipsum dolor sit ame,ftp://a.b,60.00,QCEG-25,50.00
+service-13,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",60.00,DPOL-25,50.00
+service-14,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",60.00,QVGG-25,50.00
+service-15,Lorem ipsum dolor sit ame,https://www.lorem-ipsum.org,60.00,CUAW-25,50.00
+service-16,Lorem ipsum dolor sit ame,ftp://www.lorem-ipsum.org,60.00,VHXD-25,50.00
+service-17,Lorem ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html,60.00,HUKE-25,50.00
+service-18,Lorem ipsum dolor sit ame,http://www.lorem-ipsum.org/dolor/sit.html#dolor,60.00,GAHS-25,50.00
+service-19,Lorem ipsum dolor sit ame,http://example.org?a=1&b=2,60.00,RXGX-25,50.00
+service-20,Lorem ipsum dolor sit ame,http://example.org?,60.00,MRAJ-25,50.00
+service-21,Lorem ipsum dolor sit ame,http://example.org?a,60.00,ZSOA-25,50.00
+service-22,Lorem ipsum dolor sit ame,http://example.org?a&b,60.00,RSLL-25,50.00
+service-23,Lorem ipsum dolor sit ame,http://example.org/,60.00,YMHP-25,50.00
+service-24,Lorem ipsum dolor sit ame,http://example.org/a,60.00,FZIB-25,50.00
+service-25,Lorem ipsum dolor sit ame,http://example.org/a/b,60.00,WEMB-25,50.00
+service-26,Lorem ipsum dolor sit ame,http://example.org/a/b?,60.00,JDWM-25,50.00
+service-27,Lorem ipsum dolor sit ame,http://example.org/a/b?a&b,60.00,TKIZ-25,50.00
+#avgDwellTime - standard variation
+service-28,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/tickets.jpg?csf=1&web=1&e=26d0qL,0.00,PZQL-25,50.00
+service-29,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/tickets.jpg?csf=1&web=1&e=26d0qL,0.01,GRYB-25,50.00
+service-30,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/tickets.jpg?csf=1&web=1&e=26d0qL,119.99,TVOQ-25,50.00
+service-31,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/tickets.jpg?csf=1&web=1&e=26d0qL,120.00,KHOI-25,50.00
+#promotionCode - standard variation
+service-32,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/tickets.jpg?csf=1&web=1&e=26d0qL,60.00,,50.00
+#moneyDiscountedPercentage - standard variation
+service-33,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/yellow%20suitcase.jpg?csf=1&web=1&e=RPzjQK,60.00,VLYA-25,0.00
+service-34,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/yellow%20suitcase.jpg?csf=1&web=1&e=RPzjQK,60.00,GGKP-25,0.01
+service-35,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/yellow%20suitcase.jpg?csf=1&web=1&e=RPzjQK,60.00,KBJK-25,99.99
+service-36,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/yellow%20suitcase.jpg?csf=1&web=1&e=RPzjQK,60.00,ILXB-25,100.00
+service-37,Lorem ipsum dolor sit ame,https://uses0-my.sharepoint.com/:i:/r/personal/rublopexp_alum_us_es/Documents/Imagenes%20DP2/yellow%20suitcase.jpg?csf=1&web=1&e=RPzjQK,60.00,LTYN-25,""

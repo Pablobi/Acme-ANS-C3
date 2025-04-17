@@ -1,0 +1,4 @@
+key,licenseNumber,phoneNumber,specialisation,annualHealthTestPassed,experienceYears,certifications,key:user-account
+technician-01,NK129180,+509330674018253,Lorem ipsum dolor sit ame,True,60,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",user-account-technician-01
+technician-02,NS996194,+509330674018253,Lorem ipsum dolor sit ame,True,60,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",user-account-technician-02
+technician-03,FXC851694,+509330674018253,Lorem ipsum dolor sit ame,True,60,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",user-account-technician-03

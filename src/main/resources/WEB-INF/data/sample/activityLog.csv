@@ -1,0 +1,36 @@
+key,registrationMoment,typeOfIncident,description,severityLevel,key:assignment,draftMode
+#base entity,""
+activityLog-01,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+#registrationMoment variations
+activityLog-02,2012/07/02 04:31,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+#typeOfIncident variations
+activityLog-03,2024/12/31 23:59,L,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-04,2024/12/31 23:59,Lo,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-05,2024/12/31 23:59,Lorem ipsum dolor sit amet  consectetur adipiscin,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-06,2024/12/31 23:59,Lorem ipsum dolor sit amet  consectetur adipiscing,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-07,2024/12/31 23:59,โลเร็ม อิปซัม,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-08,2024/12/31 23:59,لوريم إيبسوم,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-09,2024/12/31 23:59,洛伦·伊普森,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-10,2024/12/31 23:59,<marquee>Hacked</marquee>,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-11,2024/12/31 23:59,<script>alert(‘Hacked!’);</script>,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-12,2024/12/31 23:59,' or 'A' = 'A,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+#description variations
+activityLog-13,2024/12/31 23:59,Lorem ipsum dolor sit ame,L,5,assignment-01,TRUE
+activityLog-14,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lo,5,assignment-01,TRUE
+activityLog-15,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,5,assignment-01,TRUE
+activityLog-16,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,5,assignment-01,TRUE
+activityLog-17,2024/12/31 23:59,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,5,assignment-01,TRUE
+activityLog-18,2024/12/31 23:59,Lorem ipsum dolor sit ame,لوريم إيبسوم,5,assignment-01,TRUE
+activityLog-19,2024/12/31 23:59,Lorem ipsum dolor sit ame,洛伦·伊普森,5,assignment-01,TRUE
+activityLog-20,2024/12/31 23:59,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,5,assignment-01,TRUE
+activityLog-21,2024/12/31 23:59,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,5,assignment-01,TRUE
+activityLog-22,2024/12/31 23:59,Lorem ipsum dolor sit ame,' or 'A' = 'A,5,assignment-01,TRUE
+#severityLevel variations
+activityLog-23,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,0,assignment-01,TRUE
+activityLog-24,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,1,assignment-01,TRUE
+activityLog-25,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,9,assignment-01,TRUE
+activityLog-26,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,10,assignment-01,TRUE
+#assignment variations
+activityLog-27,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-02,TRUE
+activityLog-28,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-03,TRUE
+activityLog-29,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-04,TRUE

@@ -1,0 +1,34 @@
+customer.booking.list.title = Tus Reservas
+
+customer.booking.list.label.locatorCode = Código Localizador:
+customer.booking.list.label.purchaseMoment = Momento de Compra:
+customer.booking.list.label.travelClass = Clase:
+customer.booking.list.label.price = Precio:
+customer.booking.list.label.lastCreditCardDigits = 4 últimos dígitos de la tarjeta de crédito usada para hacer la reserva:
+customer.booking.list.label.customer = Cliente:
+customer.booking.list.label.flight = Vuelo:
+
+
+customer.booking.list.button.create = Realizar una nueva reserva
+
+customer.booking.form.title = Reserva
+
+customer.booking.form.label.locatorCode = Código Localizador:
+customer.booking.form.label.purchaseMoment = Momento de Compra:
+customer.booking.form.label.travelClass = Clase:
+customer.booking.form.label.price = Precio:
+customer.booking.form.label.lastCreditCardDigits = 4 últimos dígitos de la tarjeta de crédito usada para hacer la reserva:
+customer.booking.form.label.customer = Cliente:
+customer.booking.form.label.flight = Vuelo:
+customer.booking.form.button.passengers = Pasajeros:
+
+customer.booking.form.button.update = Actualizar
+customer.booking.form.button.delete = Eliminar
+customer.booking.form.button.create = Realizar una nueva reserva
+customer.booking.form.button.passengers.add = Añadir pasajeros
+customer.booking.form.button.publish = Publicar
+
+customer.booking.publish.no-passengers = No se puede publicar una reserva sin pasajeros
+customer.booking.publish.no-passengers-published = No se puede publicar una reserva con pasajeros no publicados
+customer.booking.publish.no-card-nibble-stored = No se puede publicar una reserva sin una tarjeta de crédito
+customer.booking.update.published-error = No se puede actualizar una reserva que ya está publicada
