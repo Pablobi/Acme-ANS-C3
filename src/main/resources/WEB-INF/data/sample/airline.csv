@@ -16,7 +16,7 @@ airline-10,<script>alert(‘Hacked!’);</script>,SSE,http://lorem.com/ipsum,STA
 airline-11,' or 'A' = 'A,RUI,http://lorem.com/ipsum,STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
  
 # website - stadard variations
-airline-12,"Lorem ipsum dolor sit ame",ZLO,http://a,STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
+airline-12,"Lorem ipsum dolor sit ame",ZLO,http://a.c,STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
 airline-13,"Lorem ipsum dolor sit ame",YBP,http://a.b,STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
 airline-14,"Lorem ipsum dolor sit ame",BYI,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/",STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
 airline-15,"Lorem ipsum dolor sit ame",WCU,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/X",STANDARD,2012/07/02 00:00,acme@lorem-ipsum.org,+3456754
