@@ -31,6 +31,7 @@ validation.flightAssignment.pastLegPublished = El encargo publicado tiene que es
 validation.flightAssignment.memberWithSimultaneousLegs = Un miembro de la tripulación no puede estar asignado a múltiples tramos simultáneos
 validation.flightAssignment.alreadyHasPilot = El tramo del encargo no puede tener múltiples pilotos
 validation.flightAssignment.alreadyHasCopilot = El tramo del encargo no puede tener múltiples copilotos
+validation.flightAssignment.legIsNull = El tramo del encargo no puede ser nulo
 validation.activityLog.legHasNotEnded = El tramo enlazado con el encargo del registro de actividad tiene que haber terminado
 validation.activityLog.assignmentIsNotPublished = El encargo del registro de actividad tiene que estar publicado
 validation.flightAssignment.legNotExists = El id del tramo no pudo ser encontrado, selecciona uno correcto

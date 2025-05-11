@@ -48,11 +48,11 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select l from Leg l")
 	Collection<Leg> findAllLegs();
 
-	@Query("select f.duty from FlightAssignment f where f.leg.id = :legId")
-	Collection<Duties> findPresentRolesInLeg(Leg legId);
-
 	@Query("select l from Leg l where l.id = :id")
 	Leg findLegById(int id);
+
+	@Query("select count(fa) > 0 from FlightAssignment fa where fa.leg.id = :legId and fa.duty = :duty")
+	boolean legHasDuty(int legId, Duties duty);
 
 	//1 que no se trate de la misma assignment 2 que pertenezca a ese crew member 3 que no se tenga en cuenta la misma leg que se le pasa 4 que no se solapen los horarios
 	@Query("select f from FlightAssignment f where f.id != :assignmentId and f.flightCrewMember.id = :crewMemberId and f.leg.id != :legId and f.leg.scheduledDeparture < :scheduledArrival and f.leg.scheduledArrival > :scheduledDeparture")

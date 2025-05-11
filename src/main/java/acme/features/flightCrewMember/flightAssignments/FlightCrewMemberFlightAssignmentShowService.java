@@ -40,15 +40,15 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int assignmentId;
 		FlightAssignment assignment;
 		FlightCrewMember member;
 
-		masterId = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(masterId);
+		assignmentId = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(assignmentId);
 		member = assignment == null ? null : assignment.getFlightCrewMember();
 		//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
-		status = super.getRequest().getPrincipal().hasRealm(member) || assignment != null && !assignment.getDraftMode();
+		status = assignment != null && (super.getRequest().getPrincipal().hasRealm(member) || !assignment.getDraftMode());
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -37,18 +37,13 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
-		int activityLogId;
+		int assignmentId;
 		FlightAssignment assignment;
-		ActivityLog activityLog;
 
-		activityLogId = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(activityLogId);
-
-		masterId = super.getRequest().getData("masterId", int.class);
-		assignment = this.repository.findAssignmentById(masterId);
-		//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
-		status = assignment != null && (!activityLog.getDraftMode() || super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember()));
+		assignmentId = super.getRequest().getData("assignmentId", int.class);
+		assignment = this.repository.findAssignmentById(assignmentId);
+		//el creador del assignment podrá listar los activity Logs siempre y cuando el assignment esté publicado
+		status = assignment != null && !assignment.getDraftMode();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,10 +51,15 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	@Override
 	public void load() {
 		Collection<ActivityLog> activityLogs;
-		int masterId;
+		int assignmentId;
+		FlightAssignment assignment;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		activityLogs = this.repository.findActivityLogsByMasterId(masterId);
+		assignmentId = super.getRequest().getData("assignmentId", int.class);
+		assignment = this.repository.findAssignmentById(assignmentId);
+		if (super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember()))
+			activityLogs = this.repository.findActivityLogsByAssignmentId(assignmentId);
+		else
+			activityLogs = this.repository.findPublishedActivityLogsByAssignmentId(assignmentId);
 
 		super.getBuffer().addData(activityLogs);
 	}
@@ -69,21 +69,22 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		Dataset dataset;
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		super.addPayload(dataset, activityLog, "registrationMoment", "typeOfIncident");
 
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void unbind(final Collection<ActivityLog> activityLogs) {
-		int masterId;
+		int assignmentId;
 		FlightAssignment assignment;
 		final boolean showCreate;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		assignment = this.repository.findAssignmentById(masterId);
-		showCreate = assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		assignmentId = super.getRequest().getData("assignmentId", int.class);
+		assignment = this.repository.findAssignmentById(assignmentId);
+		showCreate = !assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
 
-		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("assignmentId", assignmentId);
 		super.getResponse().addGlobal("showCreate", showCreate);
 	}
 

@@ -1,10 +1,10 @@
 key,duty,lastUpdate,currentStatus,remarks,key:flightCrewMember,key:leg,draftMode
 #base entity
-assignment-01,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-01,TRUE
+assignment-01,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-01,FALSE
 #Student 3 testing requirements (duty and flightCrewMember variations)
-assignment-02,LEAD_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-02,leg-01,TRUE
-assignment-03,CO_PILOT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-03,leg-01,TRUE
-assignment-04,PILOT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-04,leg-01,TRUE
+assignment-02,LEAD_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-02,leg-01,FALSE
+assignment-03,CO_PILOT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-03,leg-01,FALSE
+assignment-04,PILOT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-04,leg-01,FALSE
 #moment variations
 assignment-05,CABIN_ATTENDANT,2000/01/01 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-01,TRUE
 assignment-06,CABIN_ATTENDANT,2000/01/01 00:01,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-01,TRUE
@@ -25,8 +25,6 @@ assignment-19,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,<marquee>Hacked</marque
 assignment-20,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,<script>alert(‘Hacked!’);</script>,member-01,leg-01,TRUE
 assignment-21,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,' or 'A' = 'A,member-01,leg-01,TRUE
 #leg variations
-assignment-22,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-01,TRUE
-assignment-23,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-02,TRUE
-assignment-24,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-03,TRUE
-assignment-25,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-04,TRUE
-assignment-26,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-05,TRUE
+assignment-22,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-02,TRUE
+assignment-23,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-03,TRUE
+assignment-24,CABIN_ATTENDANT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-01,leg-04,TRUE

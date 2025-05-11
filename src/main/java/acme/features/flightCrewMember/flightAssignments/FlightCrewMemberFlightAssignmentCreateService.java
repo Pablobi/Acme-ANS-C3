@@ -76,32 +76,50 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
 
+		boolean notNullLeg;
 		boolean hasNoSimultaneousLegs;
 		//they cannot be assigned to multiple legs simultaneously
 		Leg leg1 = flightAssignment.getLeg();
-		hasNoSimultaneousLegs = this.repository.findSimultaneousLegs(flightAssignment.getId(), leg1.getId(), leg1.getScheduledDeparture(), leg1.getScheduledArrival(), flightAssignment.getFlightCrewMember().getId()).isEmpty();
-		super.state(hasNoSimultaneousLegs, "hasNoSimultaneousLegs", "validation.flightAssignment.memberWithSimultaneousLegs");
+		if (leg1 != null) {
+			hasNoSimultaneousLegs = this.repository.findSimultaneousLegs(flightAssignment.getId(), leg1.getId(), leg1.getScheduledDeparture(), leg1.getScheduledArrival(), flightAssignment.getFlightCrewMember().getId()).isEmpty();
+			super.state(hasNoSimultaneousLegs, "hasNoSimultaneousLegs", "validation.flightAssignment.memberWithSimultaneousLegs");
 
-		boolean legExists;
-		Leg leg = this.repository.findLegById(flightAssignment.getLeg().getId());
-		legExists = leg != null;
-		super.state(legExists, "legExists", "validation.flightAssignment.legNotExists");
+			boolean legExists;
+			Leg leg = this.repository.findLegById(flightAssignment.getLeg().getId());
+			legExists = leg != null;
+			super.state(legExists, "legExists", "validation.flightAssignment.legNotExists");
 
-		boolean hasNoPilot;
-		boolean hasNoCopilot;
-		//each leg can only have one pilot and one co-pilot
-		if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.PILOT)) {
-			hasNoPilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.PILOT);
-			super.state(hasNoPilot, "hasNoPilot", "validation.flightAssignment.alreadyHasPilot");
-		} else if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.CO_PILOT)) {
-			hasNoCopilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.CO_PILOT);
-			super.state(hasNoCopilot, "hasNoCopilot", "validation.flightAssignment.alreadyHasCopilot");
+			//			boolean legIsPublished;
+			//			//un assignment sólo puede ser creado si su leg está publicado
+			//			//no se puede hacer ya que aún no se ha implementado que se puedan publicar legs
+			//			legIsPublished = !leg1.getDraftMode();
+			//			super.state(legIsPublished, "legIsPublished", "validation.flightAssignment.legNotExists");
+
+			boolean hasNoPilot;
+			boolean hasNoCopilot;
+			//each leg can only have one pilot and one co-pilot
+			if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.PILOT)) {
+
+				hasNoPilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.PILOT);
+				super.state(hasNoPilot, "hasNoPilot", "validation.flightAssignment.alreadyHasPilot");
+
+			} else if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.CO_PILOT)) {
+
+				hasNoCopilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.CO_PILOT);
+				super.state(hasNoCopilot, "hasNoCopilot", "validation.flightAssignment.alreadyHasCopilot");
+			}
+		} else {
+			notNullLeg = false;
+			super.state(notNullLeg, "notNullLeg", "validation.flightAssignment.legIsNull");
 		}
 
 	}
 
 	@Override
 	public void perform(final FlightAssignment flightAssignment) {
+		//al guardar, re asigna el miembro y la ultima actualizacion
+		flightAssignment.setFlightCrewMember((FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm());
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		this.repository.save(flightAssignment);
 	}
 
@@ -119,7 +137,7 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		dutiesChoice = SelectChoices.from(Duties.class, flightAssignment.getDuty());
 		statusChoice = SelectChoices.from(AssignmentStatus.class, flightAssignment.getCurrentStatus());
 
-		dataset = super.unbindObject(flightAssignment, "duty", "lastUpdate", "currentStatus", "remarks", "leg");
+		dataset = super.unbindObject(flightAssignment, "duty", "lastUpdate", "currentStatus", "remarks");
 		dataset.put("duties", dutiesChoice);
 		dataset.put("assignmentStatuses", statusChoice);
 		dataset.put("leg", legChoices.getSelected().getKey());

@@ -16,7 +16,7 @@ leg-11,AAA0005,2022/07/30 00:00,2023/07/02 04:30,ONTIME,flight-01,airport-01,air
 leg-12,AAA0006,2012/07/02 00:00,2012/07/02 04:30,ONTIME,flight-01,airport-01,airport-02,aircraft-01
 leg-13,AAA0007,2012/07/02 00:00,2013/12/31 23:59,ONTIME,flight-01,airport-01,airport-02,aircraft-01
 leg-14,AAA0008,2012/07/02 00:00,2024/12/31 23:59,ONTIME,flight-01,airport-01,airport-02,aircraft-01
-leg-15,AAA0009,2012/07/02 00:00,2026/01/01 00:00,ONTIME,flight-01,airport-01,airport-02,aircraft-01
+leg-15,AAA0009,2024/07/02 00:00,2026/01/01 00:00,ONTIME,flight-01,airport-01,airport-02,aircraft-01
 leg-16,AAA0010,2012/07/02 00:00,2200/12/31 23:59,ONTIME,flight-01,airport-01,airport-02,aircraft-01
 #status variations,"","",""
 leg-17,AAA0011,2012/07/02 00:00,2012/07/02 04:30,ONTIME,flight-01,airport-01,airport-02,aircraft-01

@@ -38,12 +38,13 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int assignmentId;
 		FlightAssignment assignment;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		assignment = this.repository.findAssignmentById(masterId);
-		status = assignment != null && assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		assignmentId = super.getRequest().getData("assignmentId", int.class);
+		assignment = this.repository.findAssignmentById(assignmentId);
+		// tiene que estar publicado el assignment, además tienes que ser el member del assignment
+		status = assignment != null && !assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -51,11 +52,11 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	@Override
 	public void load() {
 		ActivityLog activityLog;
-		int masterId;
+		int assignmentId;
 		FlightAssignment assignment;
 
-		masterId = super.getRequest().getData("masterId", int.class);
-		assignment = this.repository.findAssignmentById(masterId);
+		assignmentId = super.getRequest().getData("assignmentId", int.class);
+		assignment = this.repository.findAssignmentById(assignmentId);
 
 		activityLog = new ActivityLog();
 		activityLog.setRegistrationMoment(MomentHelper.getCurrentMoment());
@@ -97,7 +98,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		moment = MomentHelper.getCurrentMoment();
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("assignmentId", super.getRequest().getData("assignmentId", int.class));
 		dataset.put("registrationMoment", moment);
 
 		super.getResponse().addData(dataset);

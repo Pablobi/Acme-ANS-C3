@@ -37,14 +37,17 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 	@Query("select fa from FlightAssignment fa")
 	Collection<FlightAssignment> findAllAssignments();
 
-	@Query("select fa from FlightAssignment fa where fa.id = :masterId")
-	FlightAssignment findAssignmentById(int masterId);
+	@Query("select fa from FlightAssignment fa where fa.id = :assignmentId")
+	FlightAssignment findAssignmentById(int assignmentId);
 
 	@Query("select al.assignment from ActivityLog al where al.id = :activityLogId")
 	FlightAssignment findAssignmentByActivityLogId(int activityLogId);
 
-	@Query("select al from ActivityLog al where al.assignment.id = :masterId")
-	Collection<ActivityLog> findActivityLogsByMasterId(int masterId);
+	@Query("select al from ActivityLog al where al.assignment.id = :assignmentId")
+	Collection<ActivityLog> findActivityLogsByAssignmentId(int assignmentId);
+
+	@Query("select al from ActivityLog al where al.assignment.id = :assignmentId and al.draftMode = false")
+	Collection<ActivityLog> findPublishedActivityLogsByAssignmentId(int assignmentId);
 
 	@Query("SELECT CASE WHEN COUNT(fcm) > 0 THEN true ELSE false END FROM FlightCrewMember fcm WHERE fcm.id = :id")
 	boolean existsFlightCrewMember(int id);

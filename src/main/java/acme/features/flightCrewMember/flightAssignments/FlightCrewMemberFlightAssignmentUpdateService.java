@@ -13,7 +13,6 @@
 package acme.features.flightCrewMember.flightAssignments;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -43,12 +42,12 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean status;
-		int masterId;
+		int assignmentId;
 		FlightAssignment assignment;
 		FlightCrewMember member;
 
-		masterId = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(masterId);
+		assignmentId = super.getRequest().getData("id", int.class);
+		assignment = this.repository.findFlightAssignmentById(assignmentId);
 		member = assignment == null ? null : assignment.getFlightCrewMember();
 		status = assignment != null && assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(member) && member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
 
@@ -89,21 +88,22 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		boolean hasNoCopilot;
 		//each leg can only have one pilot and one co-pilot
 		if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.PILOT)) {
-			hasNoPilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.PILOT);
+
+			hasNoPilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.PILOT);
 			super.state(hasNoPilot, "hasNoPilot", "validation.flightAssignment.alreadyHasPilot");
+
 		} else if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.CO_PILOT)) {
-			hasNoCopilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.CO_PILOT);
+
+			hasNoCopilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.CO_PILOT);
 			super.state(hasNoCopilot, "hasNoCopilot", "validation.flightAssignment.alreadyHasCopilot");
 		}
 	}
 
 	@Override
 	public void perform(final FlightAssignment flightAssignment) {
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-
-		flightAssignment.setLastUpdate(moment);
+		//al guardar, re asigna el miembro y la ultima actualizacion
+		flightAssignment.setFlightCrewMember((FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm());
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 
 		this.repository.save(flightAssignment);
 	}

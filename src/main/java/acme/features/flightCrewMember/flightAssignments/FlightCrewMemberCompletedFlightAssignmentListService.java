@@ -22,6 +22,7 @@ import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightAssignment.FlightAssignment;
+import acme.realms.flightCrewMembers.AvailabilityStatus;
 import acme.realms.flightCrewMembers.FlightCrewMember;
 
 @GuiService
@@ -44,6 +45,8 @@ public class FlightCrewMemberCompletedFlightAssignmentListService extends Abstra
 	public void load() {
 		Collection<FlightAssignment> flightAssignments;
 		int crewMemberId;
+		FlightCrewMember member;
+		final boolean memberIsAvailable;
 
 		Date now;
 
@@ -52,6 +55,10 @@ public class FlightCrewMemberCompletedFlightAssignmentListService extends Abstra
 		crewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		flightAssignments = this.repository.findCompletedAssignmentsByCrewMemberId(now, crewMemberId);
 
+		member = this.repository.findCrewMemberById(crewMemberId);
+		memberIsAvailable = member.getAvailabilityStatus() == AvailabilityStatus.AVAILABLE;
+
+		super.getResponse().addGlobal("memberIsAvailable", memberIsAvailable);
 		super.getBuffer().addData(flightAssignments);
 	}
 
@@ -59,7 +66,7 @@ public class FlightCrewMemberCompletedFlightAssignmentListService extends Abstra
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flightAssignment, "duty", "lastUpdate", "currentStatus", "remarks");
+		dataset = super.unbindObject(flightAssignment, "duty", "lastUpdate", "currentStatus", "remarks", "leg");
 		super.addPayload(dataset, flightAssignment, "flightCrewMember.employeeCode", "leg.scheduledArrival");
 
 		super.getResponse().addData(dataset);

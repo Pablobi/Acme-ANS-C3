@@ -101,10 +101,13 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean hasNoCopilot;
 		//each leg can only have one pilot and one co-pilot
 		if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.PILOT)) {
-			hasNoPilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.PILOT);
+
+			hasNoPilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.PILOT);
 			super.state(hasNoPilot, "hasNoPilot", "validation.flightAssignment.alreadyHasPilot");
+
 		} else if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.CO_PILOT)) {
-			hasNoCopilot = !this.repository.findPresentRolesInLeg(flightAssignment.getLeg()).contains(Duties.CO_PILOT);
+
+			hasNoCopilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.CO_PILOT);
 			super.state(hasNoCopilot, "hasNoCopilot", "validation.flightAssignment.alreadyHasCopilot");
 		}
 
@@ -112,12 +115,10 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void perform(final FlightAssignment flightAssignment) {
-		Date moment;
-
-		moment = MomentHelper.getCurrentMoment();
-
-		flightAssignment.setLastUpdate(moment);
-
+		//al guardar, re asigna el miembro y la ultima actualizacion
+		flightAssignment.setFlightCrewMember((FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm());
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
+		//y cambia el draftMode a falso
 		flightAssignment.setDraftMode(false);
 		this.repository.save(flightAssignment);
 	}

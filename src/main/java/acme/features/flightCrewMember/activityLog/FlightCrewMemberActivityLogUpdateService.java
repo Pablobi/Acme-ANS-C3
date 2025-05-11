@@ -46,7 +46,8 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		activityLog = this.repository.findActivityLogById(activityLogId);
 
 		assignment = activityLog.getAssignment();
-		status = assignment != null && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
+		status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -90,7 +91,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		moment = MomentHelper.getCurrentMoment();
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
-		dataset.put("masterId", activityLog.getAssignment().getId());
+		dataset.put("assignmentId", activityLog.getAssignment().getId());
 		dataset.put("registrationMoment", moment);
 
 		super.getResponse().addData(dataset);

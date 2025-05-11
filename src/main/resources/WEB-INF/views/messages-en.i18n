@@ -32,6 +32,7 @@ validation.flightAssignment.pastLegPublished = The published assignment must be 
 validation.flightAssignment.memberWithSimultaneousLegs = A crew member can not be assigned to multiple simultaneous legs 
 validation.flightAssignment.alreadyHasPilot = The leg of the assignment can not have multiple pilots
 validation.flightAssignment.alreadyHasCopilot = The leg of the assignment can not have multiple copilots
+validation.flightAssignment.legIsNull = The leg of the assignment can not be null
 validation.activityLog.legHasNotEnded = The leg linked to the assignment in the activity log has to have ended
 validation.activityLog.assignmentIsNotPublished = The activity log's flight assignment must be published
 validation.flightAssignment.legNotExists = The leg Id could not be found, select a correct one
