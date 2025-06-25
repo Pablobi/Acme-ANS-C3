@@ -30,6 +30,6 @@ agent.claim.list.label.type = Tipo:
 agent.claim.list.label.moment = Momento:
 agent.claim.list.label.email = Email:
 
-
-
 agent.claim.list.button.create = Crear
+
+agent.claim.form.error.not-tracking-logs-found = Se necesita al menos un registro de seguimiento

@@ -30,8 +30,8 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select a from FlightAssignment a where a.id = :id")
 	FlightAssignment findFlightAssignmentById(int id);
 
-	@Query("select a from FlightAssignment a where a.flightCrewMember = :fcm")
-	Collection<FlightAssignment> findFlightAssignmentsByCrewMember(FlightCrewMember fcm);
+	@Query("select a from FlightAssignment a where a.flightCrewMember.id = :crewMemberId")
+	Collection<FlightAssignment> findFlightAssignmentsByCrewMemberId(int crewMemberId);
 
 	@Query("select a from FlightAssignment a where a.leg.scheduledArrival<:now and a.flightCrewMember.id = :crewMemberId")
 	Collection<FlightAssignment> findCompletedAssignmentsByCrewMemberId(Date now, int crewMemberId);
@@ -45,14 +45,14 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select f from FlightCrewMember f where f.id = :crewMemberId")
 	FlightCrewMember findCrewMemberById(int crewMemberId);
 
-	@Query("select l from Leg l")
-	Collection<Leg> findAllLegs();
+	@Query("select l from Leg l where l.draftMode = false")
+	Collection<Leg> findAllPublishedLegs();
 
 	@Query("select l from Leg l where l.id = :id")
 	Leg findLegById(int id);
 
-	@Query("select count(fa) > 0 from FlightAssignment fa where fa.leg.id = :legId and fa.duty = :duty")
-	boolean legHasDuty(int legId, Duties duty);
+	@Query("select count(fa) > 0 from FlightAssignment fa where fa.id != :faId and fa.leg.id = :legId and fa.duty = :duty")
+	boolean legHasDuty(int legId, int faId, Duties duty);
 
 	//1 que no se trate de la misma assignment 2 que pertenezca a ese crew member 3 que no se tenga en cuenta la misma leg que se le pasa 4 que no se solapen los horarios
 	@Query("select f from FlightAssignment f where f.id != :assignmentId and f.flightCrewMember.id = :crewMemberId and f.leg.id != :legId and f.leg.scheduledDeparture < :scheduledArrival and f.leg.scheduledArrival > :scheduledDeparture")

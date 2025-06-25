@@ -30,3 +30,4 @@ task-21,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Se
 task-22,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500,FALSE,technician-01
 #technician - standard variation
 task-23,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500,TRUE,technician-02
+task-24,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500,FALSE,technician-02

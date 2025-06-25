@@ -32,7 +32,7 @@ public class AgentClaimUpdateService extends AbstractGuiService<Agent, Claim> {
 		masterId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(masterId);
 		agent = claim == null ? null : claim.getAgent();
-		status = claim != null && super.getRequest().getPrincipal().hasRealm(agent);
+		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(agent);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -56,7 +56,7 @@ public class AgentClaimUpdateService extends AbstractGuiService<Agent, Claim> {
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 
-		super.bindObject(claim, "moment", "email", "description", "type", "status");
+		super.bindObject(claim, "email", "description", "type");
 		claim.setLeg(leg);
 	}
 

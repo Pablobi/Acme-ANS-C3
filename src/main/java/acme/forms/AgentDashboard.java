@@ -15,7 +15,7 @@ public class AgentDashboard extends AbstractForm {
 
 	Double						topThreeMonthsWithhighestNumberOfClaims;
 	Double						ratioOfResolvedClaims;
-	Double						ratioOfAcceptedApplications;
+	Double						ratioOfRejectedClaims;
 
 	Double						averageLogs;
 	Double						deviationLogs;

@@ -43,11 +43,30 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		FlightCrewMember member;
-		int crewMemberId;
+		boolean status;
+		int crewMemberId, legId;
+
+		//cambiar aqui lo del super y tal
 
 		crewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		member = this.repository.findCrewMemberById(crewMemberId);
-		super.getResponse().setAuthorised(member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE));
+		status = member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
+
+		if (status && super.getRequest().hasData("id", int.class))
+			if (super.getRequest().getMethod().equals("GET"))
+				status = true;
+			else if (super.getRequest().hasData("leg", int.class)) {
+				legId = super.getRequest().getData("leg", int.class);
+				Leg leg = this.repository.findLegById(legId);
+				status = leg != null && !leg.isDraftMode() || legId == 0;
+				if (status && leg != null && legId != 0) {
+					boolean hasNoSimultaneousLegs = this.repository.findSimultaneousLegs(super.getRequest().getData("id", int.class), leg.getId(), leg.getScheduledDeparture(), leg.getScheduledArrival(), crewMemberId).isEmpty();
+					status = hasNoSimultaneousLegs;
+				}
+			} else
+				status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -70,7 +89,13 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	@Override
 	public void bind(final FlightAssignment flightAssignment) {
-		super.bindObject(flightAssignment, "duty", "lastUpdate", "currentStatus", "remarks", "leg");
+		int legId;
+		Leg leg;
+
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
+		super.bindObject(flightAssignment, "duty", "currentStatus", "remarks");
+		flightAssignment.setLeg(leg);
 	}
 
 	@Override
@@ -82,35 +107,34 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		Leg leg1 = flightAssignment.getLeg();
 		if (leg1 != null) {
 			hasNoSimultaneousLegs = this.repository.findSimultaneousLegs(flightAssignment.getId(), leg1.getId(), leg1.getScheduledDeparture(), leg1.getScheduledArrival(), flightAssignment.getFlightCrewMember().getId()).isEmpty();
-			super.state(hasNoSimultaneousLegs, "hasNoSimultaneousLegs", "validation.flightAssignment.memberWithSimultaneousLegs");
+			super.state(hasNoSimultaneousLegs, "leg", "validation.flightAssignment.memberWithSimultaneousLegs");
 
 			boolean legExists;
 			Leg leg = this.repository.findLegById(flightAssignment.getLeg().getId());
 			legExists = leg != null;
-			super.state(legExists, "legExists", "validation.flightAssignment.legNotExists");
+			super.state(legExists, "leg", "validation.flightAssignment.legNotExists");
 
-			//			boolean legIsPublished;
-			//			//un assignment sólo puede ser creado si su leg está publicado
-			//			//no se puede hacer ya que aún no se ha implementado que se puedan publicar legs
-			//			legIsPublished = !leg1.getDraftMode();
-			//			super.state(legIsPublished, "legIsPublished", "validation.flightAssignment.legNotExists");
+			boolean legIsPublished;
+			//un assignment sólo puede ser creado si su leg está publicado
+			legIsPublished = !leg1.isDraftMode();
+			super.state(legIsPublished, "leg", "validation.flightAssignment.legNotPublished");
 
 			boolean hasNoPilot;
 			boolean hasNoCopilot;
 			//each leg can only have one pilot and one co-pilot
 			if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.PILOT)) {
 
-				hasNoPilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.PILOT);
-				super.state(hasNoPilot, "hasNoPilot", "validation.flightAssignment.alreadyHasPilot");
+				hasNoPilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), flightAssignment.getId(), Duties.PILOT);
+				super.state(hasNoPilot, "duty", "validation.flightAssignment.alreadyHasPilot");
 
 			} else if (flightAssignment.getDuty() != null && flightAssignment.getDuty().equals(Duties.CO_PILOT)) {
 
-				hasNoCopilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), Duties.CO_PILOT);
-				super.state(hasNoCopilot, "hasNoCopilot", "validation.flightAssignment.alreadyHasCopilot");
+				hasNoCopilot = !this.repository.legHasDuty(flightAssignment.getLeg().getId(), flightAssignment.getId(), Duties.CO_PILOT);
+				super.state(hasNoCopilot, "duty", "validation.flightAssignment.alreadyHasCopilot");
 			}
 		} else {
 			notNullLeg = false;
-			super.state(notNullLeg, "notNullLeg", "validation.flightAssignment.legIsNull");
+			super.state(notNullLeg, "leg", "validation.flightAssignment.legIsNull");
 		}
 
 	}
@@ -130,8 +154,13 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		SelectChoices statusChoice;
 		SelectChoices legChoices;
 		Collection<Leg> legs;
+		Collection<FlightAssignment> memberAssignments;
 
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllPublishedLegs();
+		memberAssignments = this.repository.findFlightAssignmentsByCrewMemberId(super.getRequest().getPrincipal().getActiveRealm().getId());
+
+		legs.removeIf(leg -> memberAssignments.stream()
+			.anyMatch(assignment -> assignment.getLeg().equals(leg) || assignment.getLeg().getScheduledDeparture().before(leg.getScheduledArrival()) && assignment.getLeg().getScheduledArrival().after(leg.getScheduledDeparture())));
 
 		legChoices = SelectChoices.from(legs, "scheduledArrival", flightAssignment.getLeg());
 		dutiesChoice = SelectChoices.from(Duties.class, flightAssignment.getDuty());

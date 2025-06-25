@@ -28,7 +28,7 @@ public class BookingLocatorCodeValidator extends AbstractValidator<ValidBookingL
 		boolean result;
 		Booking notUnique = this.repository.findBookingByLocatorCode(booking.getLocatorCode());
 		if (notUnique != null && !notUnique.equals(booking))
-			super.state(context, false, "locatorCode", "validation.customer.uniqueIdentifier.message");
+			super.state(context, false, "locatorCode", "validation.booking.uniqueIdentifier");
 		result = !super.hasErrors(context);
 		return result;
 	}

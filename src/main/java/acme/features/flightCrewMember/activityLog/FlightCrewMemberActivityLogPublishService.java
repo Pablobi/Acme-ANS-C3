@@ -42,11 +42,14 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 		FlightAssignment assignment;
 		ActivityLog activityLog;
 
-		activityLogId = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(activityLogId);
-		assignment = this.repository.findAssignmentByActivityLogId(activityLogId);
-		// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
-		status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		if (super.getRequest().hasData("id", int.class)) {
+			activityLogId = super.getRequest().getData("id", int.class);
+			activityLog = this.repository.findActivityLogById(activityLogId);
+			assignment = this.repository.findAssignmentByActivityLogId(activityLogId);
+			// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
+			status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -64,7 +67,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void bind(final ActivityLog activityLog) {
-		super.bindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
 	}
 
 	@Override
@@ -77,11 +80,11 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 		//They are logged by any of the flight crew members assigned to the corresponding leg and after the leg has taken place.(from D02)
 		legHasEnded = MomentHelper.isAfter(now, activityLog.getAssignment().getLeg().getScheduledArrival());
-		super.state(legHasEnded, "legHasEnded", "validation.activityLog.legHasNotEnded");
+		super.state(legHasEnded, "leg", "validation.activityLog.legHasNotEnded");
 
 		//They cannot be published if their corresponding flight assignments have not been published yet
 		assignmentIsPublished = !activityLog.getAssignment().getDraftMode();
-		super.state(assignmentIsPublished, "assignmentIsPublished", "validation.activityLog.assignmentIsNotPublished");
+		super.state(assignmentIsPublished, "*", "validation.activityLog.assignmentIsNotPublished");
 
 	}
 
@@ -99,7 +102,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 		moment = MomentHelper.getCurrentMoment();
 
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel", "draftMode");
 		dataset.put("assignmentId", activityLog.getAssignment().getId());
 		dataset.put("registrationMoment", moment);
 

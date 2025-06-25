@@ -40,10 +40,13 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		int assignmentId;
 		FlightAssignment assignment;
 
-		assignmentId = super.getRequest().getData("assignmentId", int.class);
-		assignment = this.repository.findAssignmentById(assignmentId);
-		//el creador del assignment podrá listar los activity Logs siempre y cuando el assignment esté publicado
-		status = assignment != null && !assignment.getDraftMode();
+		if (super.getRequest().hasData("assignmentId", int.class)) {
+			assignmentId = super.getRequest().getData("assignmentId", int.class);
+			assignment = this.repository.findAssignmentById(assignmentId);
+			//el creador del assignment podrá listar los activity Logs siempre y cuando el assignment esté publicado
+			status = assignment != null && !assignment.getDraftMode();
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}

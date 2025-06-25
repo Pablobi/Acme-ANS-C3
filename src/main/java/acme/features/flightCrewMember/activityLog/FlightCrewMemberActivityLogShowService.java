@@ -41,12 +41,15 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 		boolean status;
 		FlightAssignment assignment;
 
-		id = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(id);
+		if (super.getRequest().hasData("id", int.class)) {
+			id = super.getRequest().getData("id", int.class);
+			activityLog = this.repository.findActivityLogById(id);
 
-		assignment = activityLog.getAssignment();
-		//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
-		status = activityLog != null && assignment != null && this.repository.existsFlightCrewMember(flightCrewMemberId) && (super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember()) || !activityLog.getDraftMode());
+			assignment = activityLog.getAssignment();
+			//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
+			status = activityLog != null && assignment != null && this.repository.existsFlightCrewMember(flightCrewMemberId) && (super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember()) || !activityLog.getDraftMode());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}

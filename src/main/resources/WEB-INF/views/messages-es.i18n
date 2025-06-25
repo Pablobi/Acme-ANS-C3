@@ -1,37 +1,65 @@
 # messages-es.i18n
 
 validation.manager.identifierNumber = El número de identificación debe seguir el patrón ^[A-Z]{2,3}\d{6}$
+
 validation.leg.flightNumber = Este código debe estar compuesto por el código IATA de la aerolínea seguido de cuatro dígitos, únicos, el patrón ^[A-Z]{2}\\d{4}$
+
 validation.airport.code = El código de un aeropuerto debe seguir el patrón ^[A-Z]{3}$
 validation.airport.contactPhoneNumber = El número de teléfono de contacto debe seguir el patrón ^\\+?\\d{6,15}$
+
 validation.airline.code = El código de una aerolínea debe seguir el patrón ^[A-Z]{3}$
 validation.airline.phoneNumber = El número de teléfono debe seguir el patrón ^\\+?\\d{6,15}$
+
 validation.trackingLog.mandatory-Resolution = La resolución de un registro "aceptado" o "rechazado" no puede ser nula
 validation.trackingLog.resolution-Taken = El estatus de un registro que no está resuelto al 100% debe ser "pendiente"
 validation.trackingLog.resolution-Not-Taken = Un registro debe estar 100% resuelto para que su estatus sea "aceptado" o "rechazado"
 validation.trackingLog.ascending-percentage = El porcentaje de resolución debe ser monótonamente creciente
+
 validation.service.promotionCode = Los dos últimos digitos del promotion code deben corresponder al año actual
 validation.service.promotionCode2 = El código de promoción de un servicio debe seguir el patrón ^[A-Z]{4}-[0-9]{2}$
 validation.service.promotionCode3 = El código de promoción de un servicio tiene que ser único
+
 validation.maintenanceRecords.nextInspectionDate = La fecha de próxima inspección debe ser posterior al momento del mantenimiento actual
 validation.maintenanceRecords.isPublishable = El registro de mantenimiento no puede tener ningúna tarea sin publicar y debe tener al menos una tarea publicada
 validation.maintenanceRecords.isCompleted = El registro de mantenimiento tiene que estar en estado completado para poder ser publicado
 validation.maintenanceRecords.nextInspectionDateNotNull = La fecha de próxima inspección no debe ser nula
+
 validation.technicians.licenseNumber = El número de licencia de un técnico debe seguir el patrón ^[A-Z]{2-3}\\d{6}$
 validation.technicians.phoneNumber = El número de teléfono de un técnico debe seguir el patrón ^\\+?\\d{6,15}$
+
 validation.flightCrewMember.codePattern = El código de empleado debe seguir el patrón ^[A-Z]{2,3}\\d{6}$
 validation.flightCrewMember.codeFormat = El código de empleado debe empezar con las iniciales del nombre y apellido del empleado
 validation.flightCrewMember.codeNotUnique = El código de empleado tiene que ser único
+
 validation.customer.uniqueIdentifier = El identificador debe ser único
+
 administrator.aircraft.create.null-airline = La aerolinea no puede estar vacía
+validation.booking.uniqueIdentifier  = Hay otro avión con el mismo número de registro
+validation.booking.creditCard = Tiene que haber 4 dígitos
+
 validation.technician.licenseNumberNotUnique = El número de licencia tiene que ser único
-validation.task.priority. = La prioridad tiene que ser un número entre 0 y 10
-validation.task.estimatedDuration. = La duración estimada debe ser un número entre 0 y 1000
+
+validation.task.priority = La prioridad tiene que ser un número entre 0 y 10
+validation.task.estimatedDuration = La duración estimada debe ser un número entre 0 y 1000
+
 validation.flightAssignment.pastLegPublished = El encargo publicado tiene que estar enlazado con un tramo que aún no haya aterrizado
 validation.flightAssignment.memberWithSimultaneousLegs = Un miembro de la tripulación no puede estar asignado a múltiples tramos simultáneos
 validation.flightAssignment.alreadyHasPilot = El tramo del encargo no puede tener múltiples pilotos
 validation.flightAssignment.alreadyHasCopilot = El tramo del encargo no puede tener múltiples copilotos
+validation.flightAssignment.legNotExists = El id del tramo no pudo ser encontrado, selecciona uno correcto
 validation.flightAssignment.legIsNull = El tramo del encargo no puede ser nulo
+
 validation.activityLog.legHasNotEnded = El tramo enlazado con el encargo del registro de actividad tiene que haber terminado
 validation.activityLog.assignmentIsNotPublished = El encargo del registro de actividad tiene que estar publicado
+
+validation.booking.locatorCode = El código localizador debe estar formado por 6-8 dígitos o letras mayúsculas
+validation.passenger.passport = El pasaporte debe estar formado por 8-9 dígitos o letras mayúsculas
+
 validation.flightAssignment.legNotExists = El id del tramo no pudo ser encontrado, selecciona uno correcto
+validation.flightAssignment.legNotPublished = El tramo asociado tiene que haber sido publicado
+
+
+acme.validation.validShortText = Debe ser menor de 50 carácteres
+acme.validation.validLongText = Debe ser menor de 255 carácteres
+
+

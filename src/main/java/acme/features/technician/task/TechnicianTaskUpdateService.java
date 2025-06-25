@@ -20,7 +20,22 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		String taskType;
+
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		else {
+			status = false;
+			taskType = super.getRequest().getData("taskType", String.class);
+			for (TaskType tType : TaskType.values())
+				if (taskType.toLowerCase().trim().equals(tType.toString().toLowerCase().trim()) || taskType.equals("0")) {
+					status = true;
+					break;
+				}
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

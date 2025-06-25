@@ -3,7 +3,6 @@ package acme.features.flightCrewMember.activityLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activityLog.ActivityLog;
@@ -24,12 +23,14 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 		int activityLogId;
 		FlightAssignment assignment;
 		ActivityLog activityLog;
-
-		activityLogId = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(activityLogId);
-		assignment = this.repository.findAssignmentByActivityLogId(activityLogId);
-		// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
-		status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		if (super.getRequest().hasData("id", int.class)) {
+			activityLogId = super.getRequest().getData("id", int.class);
+			activityLog = this.repository.findActivityLogById(activityLogId);
+			assignment = this.repository.findAssignmentByActivityLogId(activityLogId);
+			// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
+			status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 
@@ -62,15 +63,15 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 		this.repository.delete(activityLog);
 	}
 
-	@Override
-	public void unbind(final ActivityLog activityLog) {
-		Dataset dataset;
-
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
-		dataset.put("assignmentId", activityLog.getAssignment().getId());
-		dataset.put("draftMode", activityLog.getDraftMode());
-
-		super.getResponse().addData(dataset);
-	}
+	//	@Override
+	//	public void unbind(final ActivityLog activityLog) {
+	//		Dataset dataset;
+	//
+	//		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+	//		dataset.put("assignmentId", activityLog.getAssignment().getId());
+	//		dataset.put("draftMode", activityLog.getDraftMode());
+	//
+	//		super.getResponse().addData(dataset);
+	//	}
 
 }

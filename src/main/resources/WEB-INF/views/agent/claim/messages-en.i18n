@@ -32,3 +32,6 @@ agent.claim.list.label.email = Email:
 
 
 agent.claim.list.button.create = Create
+
+agent.claim.form.error.not-tracking-logs-found = At least one Tracking Log is required
+

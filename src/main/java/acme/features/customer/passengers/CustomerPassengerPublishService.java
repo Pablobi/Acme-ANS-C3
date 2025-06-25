@@ -29,6 +29,8 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 		customer = passenger.getCustomer();
 
 		status = passenger.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -45,21 +47,11 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 
 	@Override
 	public void bind(final Passenger passenger) {
-		Integer customerId;
-		Customer customer;
-
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		customer = this.repository.findCustomerById(customerId);
-
-		super.bindObject(passenger, "name", "email", "passport", "dateOfBirth");
-		passenger.setCustomer(customer);
+		super.bindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds");
 	}
 
 	@Override
 	public void validate(final Passenger passenger) {
-		boolean status;
-		status = passenger.isDraftMode();
-		super.state(status, "*", "customer.passenger.update.draft-mode");
 		;
 	}
 
@@ -72,7 +64,7 @@ public class CustomerPassengerPublishService extends AbstractGuiService<Customer
 	@Override
 	public void unbind(final Passenger passenger) {
 		Dataset dataset;
-		dataset = super.unbindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds");
+		dataset = super.unbindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

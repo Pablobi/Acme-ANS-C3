@@ -29,6 +29,8 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 		customer = passenger.getCustomer();
 
 		status = passenger.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -50,9 +52,6 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void validate(final Passenger passenger) {
-		boolean status;
-		status = passenger.isDraftMode();
-		super.state(status, "*", "customer.passenger.update.draft-mode");
 		;
 	}
 
@@ -65,7 +64,7 @@ public class CustomerPassengerUpdateService extends AbstractGuiService<Customer,
 	public void unbind(final Passenger passenger) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds");
+		dataset = super.unbindObject(passenger, "name", "email", "passport", "dateOfBirth", "specialNeeds", "draftMode");
 
 		super.getResponse().addData(dataset);
 	}

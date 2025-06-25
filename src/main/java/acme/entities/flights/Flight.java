@@ -1,8 +1,13 @@
 
 package acme.entities.flights;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -11,6 +16,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoney;
+import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidLongText;
 import acme.constraints.ValidShortText;
 import acme.realms.managers.Manager;
@@ -20,6 +26,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "id")
+})
 public class Flight extends AbstractEntity {
 
 	// Serialisation identifier
@@ -46,70 +55,56 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private String				description;
 
+	@Mandatory
+	// HINT: @Valid by default.
+	@Automapped
+	private boolean				draftMode;
+
+
 	// Derived attributes
-	//	@Transient
-	//	@Query("SELECT MIN(l.scheduledDeparture) FROM Leg l WHERE l.flight = :flight")
-	//	public Date getScheduledDeparture();
+	@Transient()
+	public Date getScheduledDeparture() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findScheduledDeparture(this.getId()).orElse(null);
+	}
 
-	//
-	//		@Transient
-	//		public Date getScheduledArrival() {
-	//			TypedQuery<Date> query = this.entityManager.createQuery("SELECT MAX(l.scheduledArrival) FROM Leg l WHERE l.flight = :flight", Date.class);
-	//			query.setParameter("flight", this);
-	//			return query.getSingleResult();
-	//		}
-	//	
-	//		@Transient
-	//		public String getOriginCity() {
-	//			TypedQuery<String> query = this.entityManager.createQuery("SELECT l.departureAirport FROM Leg l WHERE l.flight = :flight ORDER BY l.scheduledDeparture ASC", String.class);
-	//			query.setParameter("flight", this);
-	//			return query.setMaxResults(1).getSingleResult();
-	//		}
-	//	
-	//		@Transient
-	//		public String getDestinationCity() {
-	//			TypedQuery<String> query = this.entityManager.createQuery("SELECT l.arrivalAirport FROM Leg l WHERE l.flight = :flight ORDER BY l.scheduledArrival DESC", String.class);
-	//			query.setParameter("flight", this);
-	//			return query.setMaxResults(1).getSingleResult();
-	//		}
-	//	
-	//		@Transient
-	//		public int getNumberOfLayovers() {
-	//			TypedQuery<Long> query = this.entityManager.createQuery("SELECT COUNT(l) FROM Leg l WHERE l.flight = :flight", Long.class);
-	//			query.setParameter("flight", this);
-	//			Long count = query.getSingleResult();
-	//			return count != null ? Math.max(count.intValue() - 1, 0) : 0;
-	//		}
+	@Transient()
+	public Date getScheduledArrival() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findScheduledArrival(this.getId()).orElse(null);
+	}
 
-	//	@Transient
-	//	public Date getScheduledDeparture(final FlightService flightService) {
-	//		return flightService.getScheduledDeparture(this.getId());
-	//	}
-	//
-	//	@Transient
-	//	public Date getScheduledArrival(final FlightService flightService) {
-	//		return flightService.getScheduledArrival(this.getId());
-	//	}
-	//
-	//	@Transient
-	//	public String getOriginCity(final FlightService flightService) {
-	//		return flightService.getOriginCity(this.getId());
-	//	}
-	//
-	//	@Transient
-	//	public String getDestinationCity(final FlightService flightService) {
-	//		return flightService.getDestinationCity(this.getId());
-	//	}
-	//
-	//	@Transient
-	//	public int getNumberOfLayovers(final FlightService flightService) {
-	//		return flightService.getNumberOfLayovers(this.getId());
-	//	}
+	@Transient()
+	public String getOriginCity() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findOriginCity(this.getId()).orElse("Desconocido");
+	}
+
+	@Transient()
+	public String getDestinationCity() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		return repository.findDestinationCity(this.getId()).orElse("Desconocido");
+	}
+
+	@Transient()
+	public Integer getNumberOfLayovers() {
+		LegRepository repository = SpringHelper.getBean(LegRepository.class);
+		Integer layovers = repository.numberOfLavoyers(this.getId());
+		return layovers == null || layovers == 0 ? 0 : layovers - 1;
+	}
+
+	@Transient()
+	public String getLabel() {
+		String origin = this.getOriginCity();
+		String destination = this.getDestinationCity();
+		return origin + "-" + destination;
+	}
+
 
 	// Relationships
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Manager				manager;
+	private Manager manager;
 
 }

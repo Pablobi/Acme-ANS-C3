@@ -1,0 +1,9 @@
+customer.passenger-record.form.title = Añadir o eliminar pasajeros a su reserva
+
+customer.takes.form.booking = Código de su reserva
+customer.takes.form.passenger = Pasajero
+
+customer.takes.form.button.create = Añadir Pasajero
+customer.takes.form.button.delete = Eliminar Pasajero
+
+customer.passenger-record.delete.passenger.not-null = Debes elegir un pasajero

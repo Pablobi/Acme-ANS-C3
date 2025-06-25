@@ -22,5 +22,6 @@ flight-crew-member.flight-assignment.form.label.leg = Tramo:
 
 flight-crew-member.flight-assignment.form.button.update = Actualizar encargo de vuelo
 flight-crew-member.flight-assignment.form.button.publish = Publicar encargo de vuelo
+flight-crew-member.flight-assignment.form.button.delete = Borrar encargo de vuelo
 flight-crew-member.flight-assignment.form.button.create = Crear encargo de vuelo
 flight-crew-member.flight-assignment.form.button.activityLogs = Listar registro de actividad

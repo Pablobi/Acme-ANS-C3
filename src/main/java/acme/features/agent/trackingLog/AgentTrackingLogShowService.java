@@ -56,7 +56,7 @@ public class AgentTrackingLogShowService extends AbstractGuiService<Agent, Track
 		List<TrackingLog> completedTrackingLogs;
 
 		completedTrackingLogs = this.repository.findTrackingLogsByClaimIdWith100Percentage(trackingLog.getClaim().getId());
-		boolean isLastOne = completedTrackingLogs.size() == 1;
+		boolean isLastOne = completedTrackingLogs.size() >= 1;
 
 		choicesStatus = SelectChoices.from(ClaimStatus.class, trackingLog.getStatus());
 

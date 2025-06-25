@@ -21,18 +21,34 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean taskIdIsValid;
 		int taskId;
 		int technicianId;
 		Task task;
 		Technician technician;
+		String taskType;
 
-		taskId = super.getRequest().getData("id", int.class);
-		task = this.repository.findTaskById(taskId);
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		else {
+			taskId = super.getRequest().getData("id", int.class);
+			task = this.repository.findTaskById(taskId);
 
-		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		technician = this.repository.findTechnicianById(technicianId);
+			technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			technician = this.repository.findTechnicianById(technicianId);
 
-		status = task != null && task.getDraftMode().equals(true) && super.getRequest().getPrincipal().hasRealm(technician);
+			taskType = super.getRequest().getData("taskType", String.class);
+			taskIdIsValid = false;
+
+			for (TaskType tType : TaskType.values())
+				if (taskType.toLowerCase().trim().equals(tType.toString().toLowerCase().trim()) || taskType.equals("0")) {
+					taskIdIsValid = true;
+					break;
+				}
+
+			status = task != null && task.getDraftMode().equals(true) && super.getRequest().getPrincipal().hasRealm(technician) && taskIdIsValid;
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 

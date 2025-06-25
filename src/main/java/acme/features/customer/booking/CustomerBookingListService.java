@@ -20,7 +20,10 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Customer.class);
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -36,7 +39,7 @@ public class CustomerBookingListService extends AbstractGuiService<Customer, Boo
 		Dataset dataset;
 		String tag;
 		tag = booking.getFlight().getTag();
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastCreditCardDigits", "draftMode", "flight", "customer");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "draftMode");
 		dataset.put("tag", tag);
 		super.getResponse().addData(dataset);
 	}

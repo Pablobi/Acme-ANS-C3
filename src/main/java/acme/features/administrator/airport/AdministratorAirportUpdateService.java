@@ -22,7 +22,12 @@ public class AdministratorAirportUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+
+		status = true;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override

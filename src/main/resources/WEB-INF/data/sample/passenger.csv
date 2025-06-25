@@ -39,3 +39,7 @@ passenger-31,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: e
 passenger-32,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",acme@lorem-ipsum.org,A234567,2012/07/02 00:00,true,<marquee>Hacked</marquee>,customer-01
 passenger-33,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",acme@lorem-ipsum.org,A234567,2012/07/02 00:00,true,<script>alert(‘Hacked!’);</script>,customer-01
 passenger-34,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",acme@lorem-ipsum.org,A234567,2012/07/02 00:00,true,' or 'A' = 'A,customer-01
+#draftMode
+passenger-35,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",acme@lorem-ipsum.org,1234567,2012/07/02 00:00,false,Lorem ipsum dolor sit ame,customer-01
+passenger-36,"Passenger publicado y en booking-03",acme@lorem-ipsum.org,1234567,2012/07/02 00:00,false,Lorem ipsum dolor sit ame,customer-01
+passenger-37,"Passenger publicado y en booking-04",acme@lorem-ipsum.org,1234567,2012/07/02 00:00,false,Lorem ipsum dolor sit ame,customer-01

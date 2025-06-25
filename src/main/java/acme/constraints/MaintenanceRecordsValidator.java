@@ -21,17 +21,15 @@ public class MaintenanceRecordsValidator extends AbstractValidator<ValidMaintena
 	}
 
 	@Override
-	public boolean isValid(final MaintenanceRecord record, final ConstraintValidatorContext context) {
+	public boolean isValid(final MaintenanceRecord mRecord, final ConstraintValidatorContext context) {
 
 		assert context != null;
 
 		boolean result;
 
-		if (record == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-			Date maintenanceMoment = record.getMaintenanceMoment();
-			Date nextInspection = record.getNextInspectionDate();
+		if (mRecord.getNextInspectionDate() != null && mRecord.getMaintenanceMoment() != null) {
+			Date maintenanceMoment = mRecord.getMaintenanceMoment();
+			Date nextInspection = mRecord.getNextInspectionDate();
 
 			boolean nextInspectionIsValid = MomentHelper.isBefore(maintenanceMoment, nextInspection);
 

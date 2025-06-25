@@ -25,18 +25,38 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean mStatusIsValid;
 		int maintenanceRecordId;
 		int technicianId;
+		int aircraftId;
 		MaintenanceRecord maintenanceRecord;
 		Technician technician;
+		String maintenanceStatus;
+		Aircraft aircraft;
 
-		maintenanceRecordId = super.getRequest().getData("id", int.class);
-		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		else {
+			maintenanceRecordId = super.getRequest().getData("id", int.class);
+			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
-		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		technician = this.repository.findTechnicianById(technicianId);
+			technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			technician = this.repository.findTechnicianById(technicianId);
 
-		status = maintenanceRecord != null && maintenanceRecord.getDraftMode().equals(true) && super.getRequest().getPrincipal().hasRealm(technician);
+			aircraftId = super.getRequest().getData("aircraft", int.class);
+			aircraft = this.repository.findAircraftById(aircraftId);
+			maintenanceStatus = super.getRequest().getData("maintenanceStatus", String.class);
+			mStatusIsValid = false;
+
+			for (MaintenanceStatus mStatus : MaintenanceStatus.values())
+				if (maintenanceStatus.toLowerCase().trim().equals(mStatus.toString().toLowerCase().trim()) || maintenanceStatus.equals("0")) {
+					mStatusIsValid = true;
+					break;
+				}
+
+			status = maintenanceRecord != null && maintenanceRecord.getDraftMode().equals(true) && super.getRequest().getPrincipal().hasRealm(technician) && (aircraft != null || aircraftId == 0) && mStatusIsValid;
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -62,7 +82,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		aircraft = this.repository.findAircraftById(aircraftId);
 		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		technician = this.repository.findTechnicianById(technicianId);
-		super.bindObject(maintenanceRecord, "maintenanceMoment", "maintenanceStatus", "nextInspectionDate", "estimatedCost", "notes");
+		super.bindObject(maintenanceRecord, "maintenanceStatus", "nextInspectionDate", "estimatedCost", "notes");
+		maintenanceRecord.setMaintenanceMoment(maintenanceRecord.getMaintenanceMoment());
 		maintenanceRecord.setAircraft(aircraft);
 		maintenanceRecord.setTechnician(technician);
 	}
@@ -73,6 +94,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		boolean hasOnePublicTask;
 		boolean isPublishable;
 		boolean isCompleted;
+		String maintenanceStatus;
 		Collection<Task> tasks;
 
 		tasks = this.repository.findTasksByMaintenanceRecord(maintenanceRecord.getId());
@@ -83,7 +105,8 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 		super.state(isPublishable, "*", "validation.maintenanceRecords.isPublishable");
 
-		isCompleted = maintenanceRecord.getMaintenanceStatus().equals(MaintenanceStatus.COMPLETED);
+		maintenanceStatus = super.getRequest().getData("maintenanceStatus", String.class);
+		isCompleted = maintenanceStatus.toLowerCase().trim().equals(MaintenanceStatus.COMPLETED.toString().toLowerCase().trim());
 
 		super.state(isCompleted, "*", "validation.maintenanceRecords.isCompleted");
 	}

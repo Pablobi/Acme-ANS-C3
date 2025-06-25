@@ -42,7 +42,7 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 		Dataset dataset;
 
 		dataset = super.unbindObject(maintenanceRecords, "maintenanceMoment", "maintenanceStatus", "nextInspectionDate");
-		super.addPayload(dataset, maintenanceRecords, "aircraft.model", "aircraft.registrationNumber");
+		super.addPayload(dataset, maintenanceRecords, "aircraft.model", "aircraft.registrationNumber", "notes");
 
 		super.getResponse().addData(dataset);
 	}

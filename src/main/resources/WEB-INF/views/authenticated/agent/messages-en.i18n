@@ -1,0 +1,22 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+authenticated.agent.form.title = Agent data
+
+authenticated.agent.form.label.employeeCode = Code:
+authenticated.agent.form.label.languages = Languages:
+authenticated.agent.form.label.moment = Date of start:
+authenticated.agent.form.label.bio = Bio:
+authenticated.agent.form.label.salary = Salary:
+authenticated.agent.form.label.photo = Photo:
+authenticated.agent.form.label.airline = Airline:
+
+authenticated.agent.form.button.create = Register
+authenticated.agent.form.button.update = Update

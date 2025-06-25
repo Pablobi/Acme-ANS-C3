@@ -6,4 +6,7 @@ technician.task.list.label.estimatedDuration = Duración estimada:
 
 technician.involves.form.title = Tarea en Registro de Mantenimiento
 technician.involves.form.button.create = Añadir tarea a registro de mantenimiento
+technician.involves.form.button.delete = Eliminar tarea del registro de mantenimiento
 technician.involves.form.label.task = Tareas:
+
+technician.involves.delete.task.not-null = No puede ser nulo

@@ -1,12 +1,10 @@
 administrator.aircraft.list.title = Lista de Aviones
 
-administrator.aircraft.list.label.model = Modelo:
 administrator.aircraft.list.label.registrationNumber = Numero de Registro:
 administrator.aircraft.list.label.capacity = Capacidad:
-administrator.aircraft.list.label.cargoWeigth = Capacidad de carga:
 administrator.aircraft.list.label.status = Estado:
 administrator.aircraft.list.label.airline = Aerolinea:
-administrator.aircraft.list.label.details = Detalles:
+
 administrator.aircraft.list.button.create = Crear nuevo avion
 
 administrator.aircraft.form.title = Avion
@@ -22,3 +20,5 @@ administrator.aircraft.form.label.details = Detalles:
 administrator.aircraft.form.button.update = Actualizar
 administrator.aircraft.form.button.delete = Eliminar
 administrator.aircraft.form.button.create = Crear avión
+administrator.aricraft.form.button.disable = Deshabilitar
+administrator.aircraft.form.label.confirmation = Confirmmar

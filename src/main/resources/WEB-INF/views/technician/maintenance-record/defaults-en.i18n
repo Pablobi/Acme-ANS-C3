@@ -18,6 +18,8 @@ technician.maintenance-record.form.label.technician = Technician:
 
 technician.maintenance-record.form.button.tasks = Tasks
 technician.maintenance-record.form.button.addTasks = Add Tasks
+technician.maintenance-record.form.button.deleteTasks = Delete Tasks
 technician.maintenance-record.form.button.update = Update Maintenance Record
+technician.maintenance-record.form.button.delete = Delete Maintenance Record
 technician.maintenance-record.form.button.create = Create Maintenance Record
 technician.maintenance-record.form.button.publish = Publish Maintenance Record

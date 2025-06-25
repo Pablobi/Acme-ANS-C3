@@ -20,6 +20,9 @@ public interface AgentTrackingLogRepository extends AbstractRepository {
 	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :masterId")
 	Collection<TrackingLog> findTrackingLogsByMasterId(int masterId);
 
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :masterId AND t.draftMode = false")
+	Collection<TrackingLog> findPublishedTrackingLogsByMasterId(int masterId);
+
 	@Query("select c from Claim c where c.id = :id")
 	Claim findClaimById(int id);
 
@@ -34,5 +37,8 @@ public interface AgentTrackingLogRepository extends AbstractRepository {
 
 	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId ORDER BY t.percentage DESC")
 	List<TrackingLog> findTrackingLogsOrderedByPercentage(int claimId);
+
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId AND t.draftMode = false ORDER BY t.percentage DESC")
+	List<TrackingLog> findPublishedTrackingLogsOrderedByPercentage(int claimId);
 
 }

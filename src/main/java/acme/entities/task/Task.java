@@ -2,7 +2,9 @@
 package acme.entities.task;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -17,6 +19,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(indexes = {
+	@Index(columnList = "technician_id")
+})
 public class Task extends AbstractEntity {
 
 	// Serialisation identifier
@@ -36,12 +41,12 @@ public class Task extends AbstractEntity {
 	private String				description;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 10, message = "validation.task.priority")
+	@ValidNumber(min = 0, max = 10)
 	@Automapped
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 1000, message = "validation.task.estimatedDuration")
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Integer				estimatedDuration;
 
