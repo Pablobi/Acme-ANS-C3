@@ -32,6 +32,7 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 		masterId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(masterId);
 		agent = claim == null ? null : claim.getAgent();
+
 		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(agent);
 
 		super.getResponse().setAuthorised(status);
@@ -56,13 +57,16 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 		legId = super.getRequest().getData("leg", int.class);
 		leg = this.repository.findLegById(legId);
 
-		super.bindObject(claim, "moment", "email", "description", "type", "status");
+		super.bindObject(claim, "email", "description", "type");
 		claim.setLeg(leg);
 	}
 
 	@Override
 	public void validate(final Claim claim) {
-		;
+		Integer trackingLogs;
+
+		trackingLogs = this.repository.findTrackingLogsByClaimId(claim.getId()).size();
+		super.state(trackingLogs != null && trackingLogs > 0, "*", "agent.claim.form.error.not-tracking-logs-found");
 	}
 
 	@Override

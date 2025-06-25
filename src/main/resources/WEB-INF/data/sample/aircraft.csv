@@ -9,9 +9,9 @@ aircraft-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",AB5678901,127,2
 aircraft-06,โลเร็ม อิปซัม,AB6789012,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-07,لوريم إيبسوم,AB67890123,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-08,洛伦·伊普森,AB78901234,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-09,"<marquee>Hacked</marquee>",AB89012345,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-10,"<script>alert(‘Hacked!’);</script>",AB90123456,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-11,"' or 'A' = 'A",AB01234567,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-09,<marquee>Hacked</marquee>,AB89012345,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-10,<script>alert(‘Hacked!’);</script>,AB90123456,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-11,' or 'A' = 'A,AB01234567,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 #RegistrationNumber
 aircraft-12,Lorem ipsum dolor sit ame,L,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-13,Lorem ipsum dolor sit ame,Lo,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
@@ -20,12 +20,12 @@ aircraft-15,Lorem ipsum dolor sit ame,"Lorem ipsum dolor sit amet, consectetur a
 aircraft-16,Lorem ipsum dolor sit ame,โลเร็ม อิปซัม,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-17,Lorem ipsum dolor sit ame,لوريم إيبسوم,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-18,Lorem ipsum dolor sit ame,洛伦·伊普森,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-19,Lorem ipsum dolor sit ame,"<marquee>Hacked</marquee>",127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-20,Lorem ipsum dolor sit ame,"<script>alert(‘Hacked!’);</script>",127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-21,Lorem ipsum dolor sit ame,"' or 'A' = 'A ",127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-19,Lorem ipsum dolor sit ame,<marquee>Hacked</marquee>,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-20,Lorem ipsum dolor sit ame,<script>alert(‘Hacked!’);</script>,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-21,Lorem ipsum dolor sit ame,' or 'A' = 'A,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 #Capacity
-aircraft-22,Lorem ipsum dolor sit ame,BB1234567,0,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
-aircraft-23,Lorem ipsum dolor sit ame,BB2345678,1,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-22,Lorem ipsum dolor sit ame,BB1234567,1,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-23,Lorem ipsum dolor sit ame,BB2345678,2,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-24,Lorem ipsum dolor sit ame,BB3456789,254,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 aircraft-25,Lorem ipsum dolor sit ame,BB4567890,255,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
 #cargoWeigth
@@ -43,9 +43,9 @@ aircraft-34,Lorem ipsum dolor sit ame,CB3456789,127,26000.00,ACTIVE_SERVICE,"Lor
 aircraft-35,Lorem ipsum dolor sit ame,CB4567890,127,26000.00,ACTIVE_SERVICE,โลเร็ม อิปซัม,airline-01
 aircraft-36,Lorem ipsum dolor sit ame,CB5678901,127,26000.00,ACTIVE_SERVICE,لوريم إيبسوم,airline-01
 aircraft-37,Lorem ipsum dolor sit ame,CB6789012,127,26000.00,ACTIVE_SERVICE,洛伦·伊普森,airline-01
-aircraft-38,Lorem ipsum dolor sit ame,CB7890123,127,26000.00,ACTIVE_SERVICE,"<marquee>Hacked</marquee>",airline-01
-aircraft-39,Lorem ipsum dolor sit ame,CB8901234,127,26000.00,ACTIVE_SERVICE,"<script>alert(‘Hacked!’);</script>",airline-01
-aircraft-40,Lorem ipsum dolor sit ame,CB9012345,127,26000.00,ACTIVE_SERVICE,"' or 'A' = 'A" ,airline-01
+aircraft-38,Lorem ipsum dolor sit ame,CB7890123,127,26000.00,ACTIVE_SERVICE,<marquee>Hacked</marquee>,airline-01
+aircraft-39,Lorem ipsum dolor sit ame,CB8901234,127,26000.00,ACTIVE_SERVICE,<script>alert(‘Hacked!’);</script>,airline-01
+aircraft-40,Lorem ipsum dolor sit ame,CB9012345,127,26000.00,ACTIVE_SERVICE,' or 'A' = 'A,airline-01
 #Airline
 aircraft-41,Lorem ipsum dolor sit ame,DB1234567,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-02
 aircraft-42,Lorem ipsum dolor sit ame,DB2345678,127,26000.00,ACTIVE_SERVICE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-03

@@ -42,12 +42,15 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		ActivityLog activityLog;
 		FlightAssignment assignment;
 
-		activityLogId = super.getRequest().getData("id", int.class);
-		activityLog = this.repository.findActivityLogById(activityLogId);
+		if (super.getRequest().hasData("id", int.class)) {
+			activityLogId = super.getRequest().getData("id", int.class);
+			activityLog = this.repository.findActivityLogById(activityLogId);
 
-		assignment = activityLog.getAssignment();
-		// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
-		status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+			assignment = activityLog.getAssignment();
+			// tiene que estar publicado el assignment y en draftMode el activity log, además tienes que ser el member del assignment
+			status = assignment != null && !assignment.getDraftMode() && activityLog.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -65,7 +68,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog activityLog) {
-		super.bindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
 	}
 
 	@Override
@@ -74,7 +77,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		//They are logged by any of the flight crew members assigned to the corresponding leg and after the leg has taken place.
 		legHasEnded = MomentHelper.isAfterOrEqual(activityLog.getRegistrationMoment(), activityLog.getAssignment().getLeg().getScheduledArrival());
-		super.state(legHasEnded, "legHasEnded", "validation.activityLog.legHasNotEnded");
+		super.state(legHasEnded, "leg", "validation.activityLog.legHasNotEnded");
 	}
 
 	@Override
@@ -90,7 +93,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 
 		moment = MomentHelper.getCurrentMoment();
 
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		dataset = super.unbindObject(activityLog, "typeOfIncident", "description", "severityLevel", "draftMode");
 		dataset.put("assignmentId", activityLog.getAssignment().getId());
 		dataset.put("registrationMoment", moment);
 

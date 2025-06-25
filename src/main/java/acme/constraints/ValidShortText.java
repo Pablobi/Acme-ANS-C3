@@ -34,7 +34,8 @@ public @interface ValidShortText {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "{acme.validation.header.message}";
+	String message() default "Must be 50 characters long or less";
+
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};

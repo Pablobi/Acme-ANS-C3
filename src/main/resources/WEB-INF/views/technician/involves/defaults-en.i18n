@@ -6,4 +6,7 @@ technician.task.list.label.estimatedDuration = Estimated duration:
 
 technician.involves.form.title = Task in Maintenance Record
 technician.involves.form.button.create = Add task to maintenance record
+technician.involves.form.button.delete = Delete task from maintenance record
 technician.involves.form.label.task = Tasks:
+
+technician.involves.delete.task.not-null = May not be null

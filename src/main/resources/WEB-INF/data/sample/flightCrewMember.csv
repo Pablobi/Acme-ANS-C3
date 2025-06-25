@@ -1,4 +1,5 @@
 key,employeeCode,phoneNumber,languageSkills,availabilityStatus,key:airline,salary,yearsOfExperience,key:user-account
+member-00,ME223456,+441279358396,Español lengua madre e inglés C1,AVAILABLE,airline-01,EUR 500000.00,10,user-account-member-00
 #base entity
 member-01,JE123456,+441279358395,Español lengua madre e inglés C1,AVAILABLE,airline-01,EUR 500000.00,10,user-account-member-01
 #employeeCode variations

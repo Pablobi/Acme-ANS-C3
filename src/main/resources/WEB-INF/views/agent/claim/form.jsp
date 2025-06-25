@@ -21,7 +21,7 @@
 	<acme:input-textbox code="agent.claim.form.label.email" path="email"/>
 	<acme:input-textarea code="agent.claim.form.label.description" path="description"/>
 	<acme:input-select code="agent.claim.form.label.leg" path="leg" choices="${legs}"/>
-	<acme:input-textbox code="agent.claim.form.label.status" path="status" readonly="true"/>	
+	<acme:input-textbox code="agent.claim.form.label.status" path="status" readonly="true"/>
 
 
 	<jstl:choose>	 

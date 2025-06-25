@@ -5,13 +5,14 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.datatypes.Money;
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.bookings.Booking;
 import acme.entities.bookings.TravelClass;
+import acme.entities.flights.Flight;
 import acme.entities.passengers.Passenger;
 import acme.realms.customers.Customer;
 
@@ -24,20 +25,30 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int bookingId;
-		int customerId;
-		Booking booking;
-		Customer customer;
+		Flight flight;
 
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
+		int bookingId = super.getRequest().getData("id", int.class);
+		Booking booking = this.repository.findBookingById(bookingId);
+		Customer customer = booking.getCustomer();
 
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		customer = this.repository.findCustomerById(customerId);
+		boolean status = super.getRequest().getPrincipal().hasRealm(customer) && booking.isDraftMode();
 
-		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
-		super.getResponse().setAuthorised(status);
+		if (status && super.getRequest().getMethod().equals("POST")) {
+			Integer flightId = super.getRequest().getData("flight", Integer.class);
+			if (flightId != null) {
+				if (flightId != 0) {
+					flight = this.repository.findFlightById(flightId);
+					status = flight != null && !flight.isDraftMode() && flight.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
+					super.getResponse().setAuthorised(status);
+				} else
+					status = true;
+				super.getResponse().setAuthorised(status);
+			} else
+				status = false;
+			super.getResponse().setAuthorised(status);
+		} else
+			super.getResponse().setAuthorised(false);
+
 	}
 
 	@Override
@@ -53,14 +64,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void bind(final Booking booking) {
-		Integer customerId;
-		Customer customer;
-
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		customer = this.repository.findCustomerById(customerId);
-
-		super.bindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits", "purchaseMoment");
-		booking.setCustomer(customer);
+		super.bindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits", "flight");
 	}
 
 	@Override
@@ -90,9 +94,6 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		super.state(statusPassengersNotPublished, "*", "customer.booking.publish.no-passengers-published");
 		super.state(statusCreditCardNibble, "*", "customer.booking.publish.no-card-nibble-stored");
 
-		//flight = booking.getFlight();
-		//status = flight.getScheduledDeparture() < MomentHelper.getCurrentMoment() && flight.getDraftMode() == false;
-		//super.state(status, "*", "customer.booking.create.no-passe");
 	}
 
 	@Override
@@ -104,16 +105,18 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	@Override
 	public void unbind(final Booking booking) {
 		Dataset dataset;
+
 		SelectChoices classChoices;
-		String tag = booking.getFlight().getTag();
-		Money price = booking.getPrice();
+		SelectChoices flightChoices;
+		Collection<Flight> fligths;
 
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
+		fligths = this.repository.findAllFlights().stream().filter(f -> !f.isDraftMode() && f.getScheduledDeparture().after(MomentHelper.getCurrentMoment())).toList();
+		flightChoices = SelectChoices.from(fligths, "tag", booking.getFlight());
 
-		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits", "purchaseMoment", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits", "draftMode");
 		dataset.put("classes", classChoices);
-		dataset.put("tag", tag);
-		dataset.put("price", price);
+		dataset.put("flights", flightChoices);
 
 		super.getResponse().addData(dataset);
 	}

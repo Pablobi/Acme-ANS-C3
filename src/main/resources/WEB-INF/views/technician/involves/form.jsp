@@ -9,6 +9,10 @@
 	 		<acme:input-select code="technician.involves.form.label.task" path="task" choices="${task}"/>
  			<acme:submit code="technician.involves.form.button.create" action="/technician/involves/create?maintenanceRecordId=${maintenanceRecordId}"/>
  		</jstl:when>
+ 		<jstl:when test="${_command == 'delete'}">
+	 		<acme:input-select code="technician.involves.form.label.task" path="task" choices="${task}"/>
+ 			<acme:submit code="technician.involves.form.button.delete" action="/technician/involves/delete?maintenanceRecordId=${maintenanceRecordId}"/>
+ 		</jstl:when>
  		<jstl:when test="${_command == 'show'}">
 	 		<acme:input-select code="technician.task.form.label.taskType" path="task.taskType" choices="${types}" readonly="true"/>
 	 		<acme:input-textbox code="technician.task.form.label.description" path="task.description" readonly="true"/>

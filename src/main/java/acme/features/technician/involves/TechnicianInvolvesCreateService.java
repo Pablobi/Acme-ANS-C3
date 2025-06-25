@@ -23,7 +23,34 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int maintenanceRecordId;
+
+		MaintenanceRecord maintenanceRecord;
+		Technician technician;
+
+		if (super.getRequest().getDataEntries().stream().anyMatch(e -> e.getKey().equals("maintenanceRecordId"))) {
+			maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+			technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
+
+			status = technician != null && super.getRequest().getPrincipal().hasRealm(technician) && maintenanceRecord != null && maintenanceRecord.getDraftMode().equals(true);
+
+			if (super.getRequest().getMethod().equals("POST")) {
+				int taskId;
+				taskId = super.getRequest().getData("task", int.class);
+
+				Task task = this.repository.findTaskById(taskId);
+				Involves involves = this.repository.findInvolvesByTaskAndMaintenanceRecord(taskId, maintenanceRecordId);
+
+				status = status && (task != null || taskId == 0) && involves == null;
+				if (task != null)
+					status = status && (task.getTechnician().equals(technician) || task.getDraftMode().equals(false));
+			}
+		} else
+			status = false;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -63,12 +90,15 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		SelectChoices taskChoices;
 
 		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		Technician technician = maintenanceRecord == null ? null : maintenanceRecord.getTechnician();
 		Collection<Task> tasks = this.repository.findAllTasks();
 		Collection<Task> tasksInMR = this.repository.findTasksInMaintenanceRecord(maintenanceRecordId);
+		Collection<Task> taskUnpublished = tasks.stream().filter(t -> t.getTechnician() != technician && t.getDraftMode().equals(true)).toList();
 
-		tasks = tasks.stream().filter(t -> !tasksInMR.contains(t)).toList();
+		tasks = tasks.stream().filter(t -> !tasksInMR.contains(t) && !taskUnpublished.contains(t)).toList();
 
-		taskChoices = SelectChoices.from(tasks, "id", involve.getTask());
+		taskChoices = SelectChoices.from(tasks, "description", involve.getTask());
 
 		dataset = super.unbindObject(involve);
 		dataset.put("task", taskChoices);

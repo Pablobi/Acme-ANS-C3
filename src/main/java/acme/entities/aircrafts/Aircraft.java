@@ -12,6 +12,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.constraints.ValidLongText;
+import acme.constraints.ValidRegistrationNumberAircraft;
 import acme.constraints.ValidShortText;
 import acme.entities.airlines.Airline;
 import lombok.Getter;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidRegistrationNumberAircraft
 public class Aircraft extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -36,7 +38,7 @@ public class Aircraft extends AbstractEntity {
 	private String				registrationNumber;
 
 	@Mandatory
-	@ValidNumber(min = 0, max = 255)
+	@ValidNumber(min = 1, max = 255)
 	@Automapped
 	private Integer				capacity;
 

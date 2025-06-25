@@ -30,7 +30,10 @@
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
 			<acme:menu-suboption code="master.menu.administrator.list-airports" action="/administrator/airport/list"/>
 			<acme:menu-suboption code="master.menu.administrator.list-aircrafts" action="/administrator/aircraft/list"/>
-			<acme:menu-separator/>
+			<acme:menu-suboption code="master.menu.administrator.list-claims" action="/administrator/claim/list"/>
+			<acme:menu-separator/>	
+			<acme:menu-suboption code="master.menu.administrator.show-agent-dashboard" action="/administrator/agent-dashboard/show" />
+			<acme:menu-separator />
 			<acme:menu-suboption code="master.menu.administrator.populate-db-initial" action="/administrator/system/populate-initial"/>
 			<acme:menu-suboption code="master.menu.administrator.populate-db-sample" action="/administrator/system/populate-sample"/>			
 			<acme:menu-separator/>
@@ -80,6 +83,8 @@
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-manager" action="/authenticated/manager/create" access="!hasRealm('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.manager-profile" action="/authenticated/manager/update" access="hasRealm('Manager')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-agent" action="/authenticated/agent/create" access="!hasRealm('Agent')"/>
+			<acme:menu-suboption code="master.menu.user-account.agent-profile" action="/authenticated/agent/update" access="hasRealm('Agent')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

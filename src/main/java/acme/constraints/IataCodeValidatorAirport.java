@@ -28,7 +28,7 @@ public class IataCodeValidatorAirport extends AbstractValidator<ValidIATACodeAir
 		boolean result;
 		Airport notUnique = this.repository.findAirportByIataCode(airport.getIataCode());
 		if (notUnique != null && !notUnique.equals(airport))
-			super.state(context, false, "iataCode", "validation.customer.uniqueIdentifier.message");
+			super.state(context, false, "iataCode", "{validation.customer.uniqueIdentifier.message}");
 		result = !super.hasErrors(context);
 		return result;
 	}

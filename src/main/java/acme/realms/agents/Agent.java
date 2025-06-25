@@ -36,7 +36,7 @@ public class Agent extends AbstractRole {
 	@Mandatory
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
-	private String				code;
+	private String				employeeCode;
 
 	@Mandatory
 	@ValidLongText

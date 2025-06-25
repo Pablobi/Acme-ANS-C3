@@ -29,18 +29,12 @@ public class TechnicianLicenseNumberValidator extends AbstractValidator<ValidTec
 
 		boolean result;
 
-		if (technician.getUserAccount() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
-			String licenseNumber = technician.getLicenseNumber();
-			Technician sameLicenseNumber = this.repository.findTechnicianSameLicenseNumber(licenseNumber);
+		String licenseNumber = technician.getLicenseNumber();
+		Technician sameLicenseNumber = this.repository.findTechnicianSameLicenseNumber(licenseNumber);
 
-			if (licenseNumber == null)
-				super.state(context, false, "code", "javax.validation.constraints.NotNull.message");
-			else if (sameLicenseNumber != null && !sameLicenseNumber.equals(technician))
-				super.state(context, false, "code", "acme.validation.technician.licenseNumberNotUnique");
+		if (sameLicenseNumber != null && !sameLicenseNumber.equals(technician))
+			super.state(context, false, "code", "acme.validation.technician.licenseNumberNotUnique");
 
-		}
 		result = !super.hasErrors(context);
 		return result;
 	}

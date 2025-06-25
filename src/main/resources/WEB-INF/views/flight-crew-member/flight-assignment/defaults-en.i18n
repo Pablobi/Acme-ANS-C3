@@ -22,5 +22,6 @@ flight-crew-member.flight-assignment.form.label.leg = Leg:
 
 flight-crew-member.flight-assignment.form.button.update = Update flight assignment
 flight-crew-member.flight-assignment.form.button.publish = Publish flight assignment
+flight-crew-member.flight-assignment.form.button.delete = Delete flight assignment
 flight-crew-member.flight-assignment.form.button.create = Create flight assignment
 flight-crew-member.flight-assignment.form.button.activityLogs = List activity log

@@ -44,11 +44,14 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		FlightAssignment assignment;
 		FlightCrewMember member;
 
-		assignmentId = super.getRequest().getData("id", int.class);
-		assignment = this.repository.findFlightAssignmentById(assignmentId);
-		member = assignment == null ? null : assignment.getFlightCrewMember();
-		//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
-		status = assignment != null && (super.getRequest().getPrincipal().hasRealm(member) || !assignment.getDraftMode());
+		if (super.getRequest().hasData("id", int.class)) {
+			assignmentId = super.getRequest().getData("id", int.class);
+			assignment = this.repository.findFlightAssignmentById(assignmentId);
+			member = assignment == null ? null : assignment.getFlightCrewMember();
+			//el 'or' de abajo indica que estarás autorizado a listar si eres quien creó el assignment o, si no, que el assignment esté publicado(no esté en draftMode)
+			status = assignment != null && (super.getRequest().getPrincipal().hasRealm(member) || !assignment.getDraftMode());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -71,8 +74,13 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		SelectChoices statusChoice;
 		SelectChoices legChoices;
 		Collection<Leg> legs;
+		Collection<FlightAssignment> memberAssignments;
 
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllPublishedLegs();
+		memberAssignments = this.repository.findFlightAssignmentsByCrewMemberId(super.getRequest().getPrincipal().getActiveRealm().getId());
+
+		legs.removeIf(leg -> leg != flightAssignment.getLeg() && memberAssignments.stream()
+			.anyMatch(assignment -> assignment != flightAssignment && assignment.getLeg().getScheduledDeparture().before(leg.getScheduledArrival()) && assignment.getLeg().getScheduledArrival().after(leg.getScheduledDeparture())));
 
 		legChoices = SelectChoices.from(legs, "scheduledArrival", flightAssignment.getLeg());
 		dutiesChoice = SelectChoices.from(Duties.class, flightAssignment.getDuty());

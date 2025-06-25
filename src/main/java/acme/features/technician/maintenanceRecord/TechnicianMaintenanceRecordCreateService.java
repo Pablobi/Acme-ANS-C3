@@ -25,7 +25,29 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		boolean mStatusIsValid;
+		int aircraftId;
+		String maintenanceStatus;
+		Aircraft aircraft;
+
+		if (super.getRequest().getMethod().equals("GET"))
+			status = true;
+		else {
+			aircraftId = super.getRequest().getData("aircraft", int.class);
+			aircraft = this.repository.findAircraftById(aircraftId);
+			maintenanceStatus = super.getRequest().getData("maintenanceStatus", String.class);
+			mStatusIsValid = false;
+
+			for (MaintenanceStatus mStatus : MaintenanceStatus.values())
+				if (maintenanceStatus.toLowerCase().trim().equals(mStatus.toString().toLowerCase().trim()) || maintenanceStatus.equals("0")) {
+					mStatusIsValid = true;
+					break;
+				}
+			status = (aircraft != null || aircraftId == 0) && mStatusIsValid;
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -51,11 +73,12 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		aircraft = this.repository.findAircraftById(aircraftId);
 		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		technician = this.repository.findTechnicianById(technicianId);
-		super.bindObject(maintenanceRecord, "maintenanceStatus", "nextInspectionDate", "estimatedCost", "notes");
 		maintenanceRecord.setMaintenanceMoment(now);
 		maintenanceRecord.setAircraft(aircraft);
-		maintenanceRecord.setDraftMode(true);
 		maintenanceRecord.setTechnician(technician);
+		maintenanceRecord.setDraftMode(true);
+
+		super.bindObject(maintenanceRecord, "maintenanceStatus", "nextInspectionDate", "estimatedCost", "notes");
 	}
 
 	@Override
@@ -80,8 +103,9 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", maintenanceRecord.getAircraft());
 		statusChoices = SelectChoices.from(MaintenanceStatus.class, maintenanceRecord.getMaintenanceStatus());
 
-		dataset = super.unbindObject(maintenanceRecord, "maintenanceMoment", "nextInspectionDate", "estimatedCost", "draftMode", "notes", "technician");
+		dataset = super.unbindObject(maintenanceRecord, "maintenanceMoment", "nextInspectionDate", "estimatedCost", "notes", "technician");
 		dataset.put("statuses", statusChoices);
+		dataset.put("draftMode", maintenanceRecord.getDraftMode());
 		dataset.put("aircrafts", aircraftChoices);
 
 		super.getResponse().addData(dataset);

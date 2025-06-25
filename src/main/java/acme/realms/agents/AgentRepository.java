@@ -9,7 +9,7 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface AgentRepository extends AbstractRepository {
 
-	@Query("select a from Agent a where a.code = :code")
-	Agent findAgentByCode(String code);
+	@Query("select a from Agent a where a.employeeCode = :employeeCode")
+	Agent findAgentByCode(String employeeCode);
 
 }

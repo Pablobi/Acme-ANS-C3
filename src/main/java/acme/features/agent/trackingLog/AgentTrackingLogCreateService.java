@@ -41,8 +41,8 @@ public class AgentTrackingLogCreateService extends AbstractGuiService<Agent, Tra
 		completedTrackingLogs = this.repository.findTrackingLogsByClaimIdCompleted(masterId);
 		claim = this.repository.findClaimById(masterId);
 
-		boolean whenNotPublished = claim.isDraftMode() && completedTrackingLogs.size() < 1 && completedTrackingLogs.size() < 2;
-		boolean whenPublished = claim.isDraftMode() == false && completedPublishedTrackingLogs.size() == 1;
+		boolean whenNotPublished = claim.isDraftMode() && completedTrackingLogs.size() < 1;
+		boolean whenPublished = claim.isDraftMode() == false && (completedTrackingLogs.size() < 1 || completedPublishedTrackingLogs.size() == 1 && completedTrackingLogs.size() < 2);
 
 		status = claim != null && (whenPublished || whenNotPublished) && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
@@ -67,9 +67,10 @@ public class AgentTrackingLogCreateService extends AbstractGuiService<Agent, Tra
 		if (completedTrackingLogs.size() == 1) {
 			trackingLog.setStatus(completedTrackingLogs.get(0).getStatus());
 			trackingLog.setPercentage(100.00);
-		} else
+		} else {
+			trackingLog.setStatus(ClaimStatus.PENDING);
 			trackingLog.setPercentage(0.00);
-
+		}
 		trackingLog.setDraftMode(true);
 		trackingLog.setCreationMoment(currentDate);
 		trackingLog.setUpdateMoment(currentDate);
@@ -84,7 +85,13 @@ public class AgentTrackingLogCreateService extends AbstractGuiService<Agent, Tra
 	public void bind(final TrackingLog trackingLog) {
 		trackingLog.setCreationMoment(MomentHelper.getCurrentMoment());
 		trackingLog.setUpdateMoment(MomentHelper.getCurrentMoment());
-		super.bindObject(trackingLog, "step", "percentage", "updateMoment", "status", "resolution");
+		List<TrackingLog> completedTrackingLogs;
+
+		completedTrackingLogs = this.repository.findTrackingLogsByClaimIdWith100Percentage(trackingLog.getClaim().getId());
+		if (completedTrackingLogs.size() >= 1)
+			super.bindObject(trackingLog, "step", "resolution");
+		else
+			super.bindObject(trackingLog, "step", "percentage", "status", "resolution");
 	}
 
 	@Override

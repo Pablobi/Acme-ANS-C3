@@ -41,10 +41,13 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 		int assignmentId;
 		FlightAssignment assignment;
 
-		assignmentId = super.getRequest().getData("assignmentId", int.class);
-		assignment = this.repository.findAssignmentById(assignmentId);
-		// tiene que estar publicado el assignment, además tienes que ser el member del assignment
-		status = assignment != null && !assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		if (super.getRequest().hasData("assignmentId", int.class)) {
+			assignmentId = super.getRequest().getData("assignmentId", int.class);
+			assignment = this.repository.findAssignmentById(assignmentId);
+			// tiene que estar publicado el assignment, además tienes que ser el member del assignment
+			status = assignment != null && !assignment.getDraftMode() && super.getRequest().getPrincipal().hasRealm(assignment.getFlightCrewMember());
+		} else
+			status = false;
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -71,7 +74,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 	@Override
 	public void bind(final ActivityLog activityLog) {
-		super.bindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		super.bindObject(activityLog, "typeOfIncident", "description", "severityLevel");
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 		//They are logged by any of the flight crew members assigned to the corresponding leg and after the leg has taken place.
 		legHasEnded = MomentHelper.isAfter(activityLog.getRegistrationMoment(), activityLog.getAssignment().getLeg().getScheduledArrival());
-		super.state(legHasEnded, "legHasEnded", "validation.activityLog.legHasNotEnded");
+		super.state(legHasEnded, "*", "validation.activityLog.legHasNotEnded");
 
 	}
 
@@ -97,7 +100,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 		moment = MomentHelper.getCurrentMoment();
 
-		dataset = super.unbindObject(activityLog, "registrationMoment", "typeOfIncident", "description", "severityLevel");
+		dataset = super.unbindObject(activityLog, "typeOfIncident", "description", "severityLevel");
 		dataset.put("assignmentId", super.getRequest().getData("assignmentId", int.class));
 		dataset.put("registrationMoment", moment);
 

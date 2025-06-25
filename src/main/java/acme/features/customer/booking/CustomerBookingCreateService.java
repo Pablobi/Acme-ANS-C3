@@ -25,7 +25,27 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Integer fligthId;
+		Integer id;
+		Flight flight;
+		boolean status;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			fligthId = super.getRequest().getData("flight", Integer.class);
+			id = super.getRequest().getData("id", Integer.class);
+			if (id != 0)
+				super.getResponse().setAuthorised(false);
+			else if (fligthId != null) {
+				if (fligthId != 0) {
+					flight = this.repository.findFlightById(fligthId);
+					status = flight != null && !flight.isDraftMode() && flight.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
+					super.getResponse().setAuthorised(status);
+				} else
+					super.getResponse().setAuthorised(true);
+			} else
+				super.getResponse().setAuthorised(false);
+		} else
+			super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -38,28 +58,22 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		customer = this.repository.findCustomerById(customerId);
 		booking = new Booking();
 		booking.setCustomer(customer);
-		booking.setDraftMode(true);
+
 		super.getBuffer().addData(booking);
 	}
 
 	@Override
 	public void bind(final Booking booking) {
-		Integer customerId;
-		Customer customer;
 		Integer flightId;
 		Flight flight;
 		Date purchaseMoment;
 
 		purchaseMoment = MomentHelper.getCurrentMoment();
 
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		customer = this.repository.findCustomerById(customerId);
-
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.repository.findFlightById(flightId);
 
 		super.bindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits");
-		booking.setCustomer(customer);
 		booking.setFlight(flight);
 		booking.setPurchaseMoment(purchaseMoment);
 	}
@@ -71,6 +85,8 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void perform(final Booking booking) {
+		booking.setDraftMode(true);
+
 		this.repository.save(booking);
 	}
 
@@ -83,7 +99,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Collection<Flight> fligths;
 
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		fligths = this.repository.findAllFlights();
+		fligths = this.repository.findAllFlights().stream().filter(f -> !f.isDraftMode() && f.getScheduledDeparture().after(MomentHelper.getCurrentMoment())).toList();
 		flightChoices = SelectChoices.from(fligths, "tag", booking.getFlight());
 
 		dataset = super.unbindObject(booking, "locatorCode", "travelClass", "lastCreditCardDigits", "draftMode");

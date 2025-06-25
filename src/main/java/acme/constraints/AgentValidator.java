@@ -39,18 +39,18 @@ public class AgentValidator extends AbstractValidator<ValidAgent, Agent> {
 				boolean uniqueAgent;
 				Agent existingAgent;
 
-				existingAgent = this.repository.findAgentByCode(agent.getCode());
+				existingAgent = this.repository.findAgentByCode(agent.getEmployeeCode());
 				uniqueAgent = existingAgent == null || existingAgent.equals(agent);
 
-				super.state(context, uniqueAgent, "ticker", "acme.validation.job.duplicated-code.message");
+				super.state(context, uniqueAgent, "ticker", "acme.validation.agent.codeNotUnique");
 			}
 
 			String initials = this.getInitials(agent);
-			String code = agent.getCode();
+			String code = agent.getEmployeeCode();
 			boolean initialsLikeName;
 
 			initialsLikeName = code != null && code.startsWith(initials);
-			super.state(context, initialsLikeName, "code", "acme.constraints.ValidAgent.message");
+			super.state(context, initialsLikeName, "employeeCode", "validation.agent.codeInitials");
 		}
 		result = !super.hasErrors(context);
 		return result;

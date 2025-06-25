@@ -5,7 +5,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -17,7 +19,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.constraints.ValidBookingLocatorCode;
@@ -30,13 +31,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidBookingLocatorCode
+@Table(indexes = {
+	@Index(columnList = "locatorCode"), @Index(columnList = "id"), @Index(columnList = "customer_id"), @Index(columnList = "lastCreditCardDigits")
+})
 public class Booking extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes
 	@Mandatory
-	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{acme.validation.booking.locatorCode}")
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$", message = "{validation.booking.locatorCode}")
 	@Column(unique = true)
 	private String				locatorCode;
 
@@ -51,9 +55,9 @@ public class Booking extends AbstractEntity {
 	private TravelClass			travelClass;
 
 	@Optional
-	@ValidNumber(integer = 4)
+	@ValidString(pattern = "^[0-9]{4}$", message = "{validation.booking.creditCard}")
 	@Automapped
-	private Integer				lastCreditCardDigits;
+	private String				lastCreditCardDigits;
 
 	@Mandatory
 	// HINT: @Valid by default.

@@ -38,11 +38,6 @@ public class AdministratorAircraftDeleteService extends AbstractGuiService<Admin
 	}
 
 	@Override
-	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeigth", "status", "details");
-	}
-
-	@Override
 	public void validate(final Aircraft aircraft) {
 		boolean confirmation;
 

@@ -54,7 +54,17 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 
 	@Override
 	public void bind(final TrackingLog trackingLog) {
-		super.bindObject(trackingLog, "step", "percentage", "updateMoment", "status", "resolution");
+		List<TrackingLog> completedTrackingLogs;
+
+		completedTrackingLogs = this.repository.findTrackingLogsByClaimIdWith100Percentage(trackingLog.getClaim().getId());
+
+		if (completedTrackingLogs.size() >= 1) {
+			trackingLog.setStatus(completedTrackingLogs.get(0).getStatus());
+			trackingLog.setPercentage(100.00);
+			super.bindObject(trackingLog, "step", "resolution");
+
+		} else
+			super.bindObject(trackingLog, "step", "percentage", "status", "resolution");
 	}
 
 	@Override

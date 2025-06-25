@@ -26,9 +26,7 @@ public class ActivityLogValidator extends AbstractValidator<ValidActivityLog, Ac
 		assert context != null;
 		boolean result;
 
-		if (activityLog == null || activityLog.getRegistrationMoment() == null || activityLog.getAssignment() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else if (!MomentHelper.isAfter(activityLog.getRegistrationMoment(), activityLog.getAssignment().getLeg().getScheduledArrival()))
+		if (!MomentHelper.isAfter(activityLog.getRegistrationMoment(), activityLog.getAssignment().getLeg().getScheduledArrival()))
 			super.state(context, false, "registrationMoment", "validation.activityLog.legHasNotEnded");
 		result = !super.hasErrors(context);
 

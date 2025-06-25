@@ -37,29 +37,43 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 
 		else if (trackingLog.getPercentage() == 100.00) {
-			boolean emptyResolution;
-			emptyResolution = trackingLog.getResolution() != null;
-			super.state(context, emptyResolution, "resolution", "acme.validation.trackingLog.mandatory-Resolution.message");
 
-			boolean onlyAcceptedOrRejected;
-			onlyAcceptedOrRejected = trackingLog.getStatus().equals(ClaimStatus.ACCEPTED) || trackingLog.getStatus().equals(ClaimStatus.REJECTED);
-			super.state(context, onlyAcceptedOrRejected, "status", "acme.validation.trackingLog.resolution-Not-Taken.message");
+			if (trackingLog.getStatus() == null)
+				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+			else {
+				boolean onlyAcceptedOrRejected;
+				onlyAcceptedOrRejected = trackingLog.getStatus().equals(ClaimStatus.ACCEPTED) || trackingLog.getStatus().equals(ClaimStatus.REJECTED);
+				super.state(context, onlyAcceptedOrRejected, "status", "validation.trackingLog.resolution-Not-Taken.message");
+			}
+			boolean emptyResolution;
+			emptyResolution = !trackingLog.getResolution().isBlank();
+			super.state(context, emptyResolution, "resolution", "validation.trackingLog.mandatory-Resolution.message");
 
 		} else if (trackingLog.getPercentage() < 100.00) {
-			boolean onlyPending;
-			onlyPending = trackingLog.getStatus().equals(ClaimStatus.PENDING);
-			super.state(context, onlyPending, "status", "acme.validation.trackingLog.resolution-Taken.message");
+			if (trackingLog.getStatus() == null)
+				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+			else {
+				boolean onlyPending;
+				onlyPending = trackingLog.getStatus().equals(ClaimStatus.PENDING);
+				super.state(context, onlyPending, "status", "validation.trackingLog.resolution-Taken.message");
+			}
 
-			/*
-			 * boolean ascending;
-			 * TrackingLog actualMax = this.repository.findTrackingLogsOrderedByPercentage(trackingLog.getClaim().getId()).get(0);
-			 * if (trackingLog.getPercentage() == 100.00)
-			 * ascending = trackingLog.getPercentage() == actualMax.getPercentage();
-			 * else
-			 * ascending = trackingLog.getPercentage() > actualMax.getPercentage();
-			 * super.state(context, ascending, "percentage", "acme.validation.trackingLog.ascending-percentage.message");
-			 */
+			if (trackingLog.isDraftMode() == false) {
+				boolean ascending;
+
+				if (this.repository.findTrackingLogsByMasterId(trackingLog.getClaim().getId()).size() > 0) {
+
+					TrackingLog actualMax = this.repository.findPublishedTrackingLogsOrderedByPercentage(trackingLog.getClaim().getId()).get(0);
+					if (trackingLog.getPercentage() == 100.00)
+						ascending = trackingLog.getPercentage() >= actualMax.getPercentage();
+					else
+						ascending = trackingLog.getPercentage() > actualMax.getPercentage();
+				} else
+					ascending = true;
+				super.state(context, ascending, "percentage", "validation.trackingLog.ascending-percentage.message");
+			}
 		}
+
 		result = !super.hasErrors(context);
 		return result;
 	}

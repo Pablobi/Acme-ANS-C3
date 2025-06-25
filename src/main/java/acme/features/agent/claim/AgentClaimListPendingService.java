@@ -43,7 +43,7 @@ public class AgentClaimListPendingService extends AbstractGuiService<Agent, Clai
 
 		dataset = super.unbindObject(claim, "type", "moment", "email");
 		super.addPayload(dataset, claim, //
-			"description", "agent.code", //
+			"description", "agent.employeeCode", //
 			"agent.identity.fullName", "agent.airline", "leg.id");
 
 		super.getResponse().addData(dataset);
