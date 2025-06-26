@@ -36,7 +36,7 @@ public class FlightCrewMember extends AbstractRole {
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{validation.flightCrewMember.phoneNumberPattern}")
 	@Automapped
 	private String				phoneNumber;
 

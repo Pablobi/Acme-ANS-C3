@@ -31,7 +31,8 @@ validation.maintenanceRecords.nextInspectionDateNotNull = The next inspection da
 validation.technicians.licenseNumber = The license number of a technician must follow the pattern ^[A-Z]{2-3}\\d{6}$
 validation.technicians.phoneNumber = The phone number of a technician must follow the pattern ^\\+?\\d{6,15}$
 
-validation.flightCrewMember.codePattern = The employee code must follow the pattern ^[A-Z]{2,3}\\d{6}$
+validation.flightCrewMember.codePattern = The employee code must follow the pattern of 2 or 3 capital letters which may be your initials and 6 consecutive digits
+validation.flightCrewMember.phoneNumberPattern = The phone number must follow the pattern of an optional + symbol and between 6 and 15 consecutive digits
 validation.flightCrewMember.codeInitials = The employee code must start with the initials of the name and surname of the employee
 validation.flightCrewMember.codeNotUnique = The employee code must be unique
 
