@@ -1,0 +1,5 @@
+key,duty,lastUpdate,currentStatus,remarks,key:flightCrewMember,key:leg,draftMode
+#moment variations
+assignment-25,CABIN_ATTENDANT,1990/01/01 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-04,leg-01,TRUE
+assignment-26,CABIN_ATTENDANT,1990/01/01 00:01,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-04,leg-01,TRUE
+assignment-27,CABIN_ATTENDANT,2025/01/01 00:00,CONFIRMED,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,member-04,leg-01,TRUE
