@@ -57,6 +57,7 @@ master.menu.customer.list-passenger = Ver pasajeros
 master.menu.flightCrewMember = Miembro de la tripulación de vuelo
 master.menu.flightCrewMember.list-completedFlightAssignments = Listar encargos de vuelo completados
 master.menu.flightCrewMember.list-uncompletedFlightAssignments = Listar encargos de vuelo no completados
+master.menu.flightCrewMember.show-dashboard = Mostrar dashboard
 master.menu.flightCrewMember.list-activityLog = Listar registros de actividad
 
 # master.menu.manager ##########################################################
@@ -70,6 +71,11 @@ master.menu.agent = Agente
 master.menu.agent.list-completed = Reclamaciones resueltas
 master.menu.agent.list-pending = Reclamaciones pendientes
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Autenticado
+master.menu.authenticated.list-flight-assignments = Listar encargos de vuelo
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
@@ -80,3 +86,5 @@ master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
 master.menu.user-account.become-agent = Hazte agente de asistencia
 master.menu.user-account.agent-profile = Perfil de agente de asistencia
+master.menu.user-account.become-flight-crew-member = Hazte un miembro de la tripulación de vuelo
+master.menu.user-account.flight-crew-member-profile = Perfil de miembro de la tripulación de vuelo

@@ -1,0 +1,25 @@
+# validation-es.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+flight-crew-member.dashboard.form.title.general-indicators = Indicadores generales
+
+flight-crew-member.flight-crew-member-dashboard.form.title = Dasboard del miembro de la tripulación
+flight-crew-member.dashboard.form.label.last-five-destinations = Últimos cinco destinos
+flight-crew-member.dashboard.form.label.legs-severity-level-0-3 = Número de tramos con nivel de severidad entre 0 y 3
+flight-crew-member.dashboard.form.label.legs-severity-level-4-7 = Número de tramos con nivel de severidad entre 4 y 7
+flight-crew-member.dashboard.form.label.legs-severity-level-8-10 = Número de tramos con nivel de severidad entre 8 y 10
+flight-crew-member.dashboard.form.label.crew-members-last-leg = Miembros de la tripulación del último tramo
+flight-crew-member.dashboard.form.label.confirmed-flight-assignments = Número de vuelo de tramos de encargos de vuelo confirmados y publicados
+flight-crew-member.dashboard.form.label.pending-flight-assignments = Número de vuelo de tramos de encargos de vuelo pendientes y publicados
+flight-crew-member.dashboard.form.label.cancelled-flight-assignments = Número de vuelo de tramos de encargos de vuelo cancelados y publicados
+flight-crew-member.dashboard.form.label.average-last-month-assignments = Promedio de encargos de vuelo publicados en meses en los que has trabajado
+flight-crew-member.dashboard.form.label.minimum-last-month-assignments = Mínimo de encargos de vuelo publicados en últimos 10 meses
+flight-crew-member.dashboard.form.label.maximum-last-month-assignments = Máximo de encargos de vuelo publicados en últimos 10 meses
+flight-crew-member.dashboard.form.label.standard-deviation-last-month-assignments = Desviación estándar del número de encargos de vuelo publicados en últimos 10 meses
