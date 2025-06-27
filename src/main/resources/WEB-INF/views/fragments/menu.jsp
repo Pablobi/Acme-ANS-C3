@@ -72,6 +72,10 @@
 			<acme:menu-suboption code="master.menu.agent.list-completed" action="/agent/claim/list-completed"/>
 			<acme:menu-suboption code="master.menu.agent.list-pending" action="/agent/claim/list-pending"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.authenticated" access="isAuthenticated()">
+			<acme:menu-suboption code="master.menu.authenticated.list-flight-assignments" action="/authenticated/flight-assignment/list" />
+		</acme:menu-option>
 
 	</acme:menu-left>
 
@@ -86,6 +90,8 @@
 			<acme:menu-suboption code="master.menu.user-account.manager-profile" action="/authenticated/manager/update" access="hasRealm('Manager')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-agent" action="/authenticated/agent/create" access="!hasRealm('Agent')"/>
 			<acme:menu-suboption code="master.menu.user-account.agent-profile" action="/authenticated/agent/update" access="hasRealm('Agent')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-flight-crew-member" action="/authenticated/flight-crew-member/create" access="!hasRealm('FlightCrewMember')"/>
+			<acme:menu-suboption code="master.menu.user-account.flight-crew-member-profile" action="/authenticated/flight-crew-member/update" access="hasRealm('FlightCrewMember')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>

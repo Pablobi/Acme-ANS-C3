@@ -29,7 +29,7 @@ validation.technicians.phoneNumber = El número de teléfono de un técnico debe
 
 validation.flightCrewMember.codePattern = El código de empleado debe seguir el patrón de 2 o 3 letras mayúsculas que han de ser sus iniciales y 6 dígitos consecutivos
 validation.flightCrewMember.phoneNumberPattern = El número de teléfono debe seguir el patrón de un símbolo + opcional y entre 6 y 15 dígitos consecutivos
-validation.flightCrewMember.codeFormat = El código de empleado debe empezar con las iniciales del nombre y apellido del empleado
+validation.flightCrewMember.codeInitials = El código de empleado debe seguir el patrón de 2 o 3 letras mayúsculas que han de ser sus iniciales y 6 dígitos consecutivos
 validation.flightCrewMember.codeNotUnique = El código de empleado tiene que ser único
 
 validation.customer.uniqueIdentifier = El identificador debe ser único

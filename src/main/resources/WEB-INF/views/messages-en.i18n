@@ -13,7 +13,6 @@ validation.agent.codeInitials = The agent code must start with the initials of t
 validation.agent.codeNotUnique = The agent code must be unique
 validation.claim.leg.arrival-message = The leg must have finished
 validation.claim.leg.not-published-flight-message = Its leg's flight must be published
-validation.flightCrewMember.codeInitials = The employee code must start with the initials of the name and surname of the employee
 validation.trackingLog.mandatory-Resolution.message = The resolution of an accepted or rejected log can not be null
 validation.trackingLog.resolution-Not-Taken.message = The resolution of a log 100% resolved has to be accepted o rejected
 validation.trackingLog.resolution-Taken.message = The status of a log not 100% resolved has to be pending
@@ -33,7 +32,7 @@ validation.technicians.phoneNumber = The phone number of a technician must follo
 
 validation.flightCrewMember.codePattern = The employee code must follow the pattern of 2 or 3 capital letters which may be your initials and 6 consecutive digits
 validation.flightCrewMember.phoneNumberPattern = The phone number must follow the pattern of an optional + symbol and between 6 and 15 consecutive digits
-validation.flightCrewMember.codeInitials = The employee code must start with the initials of the name and surname of the employee
+validation.flightCrewMember.codeInitials = The employee code must follow the pattern of 2 or 3 capital letters which may be your initials and 6 consecutive digits
 validation.flightCrewMember.codeNotUnique = The employee code must be unique
 
 validation.customer.uniqueIdentifier = The identifier must be unique

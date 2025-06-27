@@ -10,9 +10,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = CrewMemberCodeValidator.class)
+@Constraint(validatedBy = FlightCrewMemberValidator.class)
 @Target(ElementType.TYPE)
-public @interface ValidCrewMemberCode {
+public @interface ValidFlightCrewMember {
 
 	String message() default "";
 	Class<?>[] groups() default {};
