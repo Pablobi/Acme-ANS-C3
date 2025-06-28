@@ -74,7 +74,7 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 		}
 
 		initials = initials.toString().toUpperCase();
-		System.out.println(initials);
+
 		return initials;
 	}
 
