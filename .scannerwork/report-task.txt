@@ -1,0 +1,6 @@
+projectKey=Acme-ANS-C2
+serverUrl=http://localhost:9000
+serverVersion=25.6.0.109173
+dashboardUrl=http://localhost:9000/dashboard?id=Acme-ANS-C2
+ceTaskId=bbec638f-a680-410f-80c7-006b4c7418cf
+ceTaskUrl=http://localhost:9000/api/ce/task?id=bbec638f-a680-410f-80c7-006b4c7418cf
