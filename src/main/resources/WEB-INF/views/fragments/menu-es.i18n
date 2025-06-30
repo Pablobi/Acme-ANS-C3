@@ -74,7 +74,7 @@ master.menu.agent.list-pending = Reclamaciones pendientes
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Autenticado
-master.menu.authenticated.list-flight-assignments = Listar encargos de vuelo
+master.menu.authenticated.list-flight-assignments = Listar todos los encargos de vuelo publicados
 
 # master.menu.user-account ####################################################
 
