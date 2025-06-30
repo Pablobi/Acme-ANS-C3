@@ -74,7 +74,7 @@ master.menu.technician.list-my-tasks = List my tasks
 # master.menu.authenticated #######################################################
 
 master.menu.authenticated = Authenticated
-master.menu.authenticated.list-flight-assignments = List flight assignments
+master.menu.authenticated.list-flight-assignments = List all published flight assignments
 
 # master.menu.user-account ####################################################
 

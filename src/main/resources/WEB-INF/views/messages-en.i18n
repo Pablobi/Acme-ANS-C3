@@ -2,13 +2,12 @@
 
 validation.manager.identifierNumber = The identifier number must follow the pattern ^[A-Z]{2,3}\d{6}$
 
-validation.leg.flightNumber = This code must be composed of the airline's IATA code followed by four digits, unique, the pattern ^[A-Z]{2}\\d{4}$
 
 validation.airport.code = The code of an airport must follow the pattern ^[A-Z]{3}$
 validation.airport.contactPhoneNumber = The contact phone number must follow the pattern ^\\+?\\d{6,15}$
 
-validation.airline.code = The code of an airline must follow the pattern ^[A-Z]{3}$
-validation.airline.phoneNumber = The phone number must follow the pattern ^\\+?\\d{6,15}$
+validation.airline.code = The code of an airline must follow the pattern of 3 capital letters
+validation.airline.phoneNumber = The phone number must follow the pattern of an optional + symbol and between 6 and 15 consecutive digits
 validation.agent.codeInitials = The agent code must start with the initials of the name and surname of the employee
 validation.agent.codeNotUnique = The agent code must be unique
 validation.claim.leg.arrival-message = The leg must have finished
@@ -45,7 +44,6 @@ validation.task.priority = The priority must be a number between 0 and 10
 validation.task.estimatedDuration = The estimated duration must be a number between 0 and 1000
 
 validation.technician.licenseNumberNotUnique = The license number must be unique
-validation.technician.licenseNumberNotUnique = The license number must be unique
 
 validation.flightAssignment.pastLegPublished = The published assignment must be linked to a leg that has not arrived
 validation.flightAssignment.memberWithSimultaneousLegs = A crew member can not be assigned to multiple simultaneous legs 
@@ -60,8 +58,9 @@ validation.activityLog.assignmentIsNotPublished = The activity log's flight assi
 validation.booking.locatorCode = The locator code must be formed by 6-8 digits or upper case letters
 validation.passenger.passport = The passport must be formed by 6-9 digits or upper case letters
 
-validation.flightAssignment.legNotExists = The leg Id could not be found, select a correct one´
 validation.flightAssignment.legNotPublished = The associated leg has to be published
+
+validation.leg.flightNumber = The flightNumber must follow the pattern of 3 capital letters(the airline IATA code) and 4 consecutive digits
 
 
 acme.validation.validShortText = Must be less than 50 characters
