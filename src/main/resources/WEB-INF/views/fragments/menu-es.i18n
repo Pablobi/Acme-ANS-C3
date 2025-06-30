@@ -22,6 +22,7 @@ master.menu.anonymous.favourite-link-RubLopExp = **63**98: López Expósito, Rub
 
 master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
+master.menu.administrator.list-airports = Lista de aeropuertos
 master.menu.administrator.list-aircrafts = Ver aviones
 master.menu.administrator.list-claims = Ver reclamaciones publicadas
 master.menu.administrator.show-agent-dashboard = Dashboard de agentes
@@ -84,6 +85,8 @@ master.menu.user-account.become-provider = Hacerse proveedor
 master.menu.user-account.provider-profile = Perfil de proveedor
 master.menu.user-account.become-consumer = Hazte consumidor
 master.menu.user-account.consumer-profile = Perfil de consumidor
+master.menu.user-account.become-manager = Hazte un manager
+master.menu.user-account.manager-profile = Perfil del manager
 master.menu.user-account.become-agent = Hazte agente de asistencia
 master.menu.user-account.agent-profile = Perfil de agente de asistencia
 master.menu.user-account.become-flight-crew-member = Hazte un miembro de la tripulación de vuelo

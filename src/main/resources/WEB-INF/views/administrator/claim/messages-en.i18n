@@ -18,6 +18,7 @@ administrator.claim.form.label.description = Description:
 administrator.claim.form.label.status = Status:
 administrator.claim.form.label.leg = Leg:
 
+
 administrator.claim.list.label.moment = Moment
 administrator.claim.list.label.type = Type
 administrator.claim.list.label.email = Email

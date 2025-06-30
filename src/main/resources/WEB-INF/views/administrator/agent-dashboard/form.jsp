@@ -16,7 +16,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <h2>
-	<acme:print code="administrator.dashboard.form.title.general-indicators"/>
+	<acme:print code="administrator.agent-dashboard.form.title.general-indicators"/>
 </h2>
 
 <table class="table table-sm">
@@ -55,7 +55,7 @@
 </table>
 
 <h2>
-	<acme:print code="administrator.dashboard.form.title.application-statuses"/>
+	<acme:print code="administrator.agent-dashboard.form.title.application-statuses"/>
 </h2>
 
 <div>

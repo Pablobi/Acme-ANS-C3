@@ -2,13 +2,12 @@
 
 validation.manager.identifierNumber = El número de identificación debe seguir el patrón ^[A-Z]{2,3}\d{6}$
 
-validation.leg.flightNumber = Este código debe estar compuesto por el código IATA de la aerolínea seguido de cuatro dígitos, únicos, el patrón ^[A-Z]{2}\\d{4}$
 
 validation.airport.code = El código de un aeropuerto debe seguir el patrón ^[A-Z]{3}$
 validation.airport.contactPhoneNumber = El número de teléfono de contacto debe seguir el patrón ^\\+?\\d{6,15}$
 
-validation.airline.code = El código de una aerolínea debe seguir el patrón ^[A-Z]{3}$
-validation.airline.phoneNumber = El número de teléfono debe seguir el patrón ^\\+?\\d{6,15}$
+validation.airline.code = El código de una aerolínea debe seguir el patrón de tres letras mayúsculas
+validation.airline.phoneNumber = El número de teléfono debe seguir el patrón de un símbolo + opcional y entre 6 y 15 dígitos consecutivos
 
 validation.trackingLog.mandatory-Resolution = La resolución de un registro "aceptado" o "rechazado" no puede ser nula
 validation.trackingLog.resolution-Taken = El estatus de un registro que no está resuelto al 100% debe ser "pendiente"
@@ -56,8 +55,9 @@ validation.activityLog.assignmentIsNotPublished = El encargo del registro de act
 validation.booking.locatorCode = El código localizador debe estar formado por 6-8 dígitos o letras mayúsculas
 validation.passenger.passport = El pasaporte debe estar formado por 8-9 dígitos o letras mayúsculas
 
-validation.flightAssignment.legNotExists = El id del tramo no pudo ser encontrado, selecciona uno correcto
 validation.flightAssignment.legNotPublished = El tramo asociado tiene que haber sido publicado
+
+validation.leg.flightNumber =  El número de vuelo ha de seguir el patrón de 3 letras mayúsculas(el código IATA de la aerolínea) y 4 dígitos consecutivos
 
 
 acme.validation.validShortText = Debe ser menor de 50 carácteres

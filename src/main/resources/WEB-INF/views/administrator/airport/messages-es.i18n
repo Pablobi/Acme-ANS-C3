@@ -1,0 +1,44 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+administrator.airport.list.title = Aeropuertos:
+administrator.airport.form.title = Detalles de aeropuerto:
+
+administrator.airport.form.label.name = Nombre
+administrator.airport.form.label.code = Código
+administrator.airport.form.label.operationalScope = Alcance Operativo
+administrator.airport.form.label.city = Ciudad
+administrator.airport.form.label.country = País
+administrator.airport.form.label.website = Página web (opcional)
+administrator.airport.form.label.email = Email (opcional)
+administrator.airport.form.label.contactPhoneNumber = Número de teléfono de contacto (opcional)
+administrator.airport.form.label.confirmation = Confirmar
+
+
+administrator.airport.list.label.name = Nombre
+administrator.airport.list.label.code = Código
+administrator.airport.list.label.operationalScope = Alcance Operativo
+administrator.airport.list.label.city = Ciudad
+administrator.airport.list.label.country = País
+administrator.airport.list.label.website = Página web
+administrator.airport.list.label.email = Email
+administrator.airport.list.label.contactPhoneNumber = Número de teléfono de contacto
+
+
+administrator.airport.form.button.create = Crear proyecto
+administrator.airport.list.button.create = Crear proyecto
+administrator.airport.form.title = Formulario de aeropuerto
+administrator.airport.list.title = Lista de aeropuertos
+
+administrator.airport.form.button.create = Crear
+administrator.airport.form.button.update = Actualizar
+administrator.airport.form.button.delete = Borrar
+ 
+
