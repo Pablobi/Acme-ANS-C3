@@ -39,7 +39,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else if (trackingLog.getPercentage() == 100.00) {
 
 			if (trackingLog.getStatus() == null)
-				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+				super.state(context, trackingLog.getStatus() != null, "status", "javax.validation.constraints.NotNull.message");
 			else {
 				boolean onlyAcceptedOrRejected;
 				onlyAcceptedOrRejected = trackingLog.getStatus().equals(ClaimStatus.ACCEPTED) || trackingLog.getStatus().equals(ClaimStatus.REJECTED);
@@ -51,7 +51,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		} else if (trackingLog.getPercentage() < 100.00) {
 			if (trackingLog.getStatus() == null)
-				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+				super.state(context, trackingLog.getStatus() != null, "status", "javax.validation.constraints.NotNull.message");
 			else {
 				boolean onlyPending;
 				onlyPending = trackingLog.getStatus().equals(ClaimStatus.PENDING);
