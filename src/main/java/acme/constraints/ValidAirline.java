@@ -23,10 +23,10 @@ import javax.validation.Payload;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {
-	IataCodeValidatorAirline.class
+	ValidatorAirline.class
 })
 
-public @interface ValidIATACodeAirline {
+public @interface ValidAirline {
 
 	// Standard validation properties -----------------------------------------
 

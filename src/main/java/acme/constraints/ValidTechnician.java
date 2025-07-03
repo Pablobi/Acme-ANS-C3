@@ -10,9 +10,9 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = TechnicianLicenseNumberValidator.class)
+@Constraint(validatedBy = TechnicianValidator.class)
 @Target(ElementType.TYPE)
-public @interface ValidTechnicianLicenseNumber {
+public @interface ValidTechnician {
 
 	String message() default "";
 	Class<?>[] groups() default {};

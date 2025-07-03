@@ -21,8 +21,13 @@ public class AdministratorAirlineShowService extends AbstractGuiService<Administ
 	@Override
 	public void authorise() {
 		boolean status;
+		int airlineId;
+		Airline airline;
 
-		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class);
+		airlineId = super.getRequest().getData("id", int.class);
+		airline = this.repository.findAirlineById(airlineId);
+
+		status = super.getRequest().getPrincipal().hasRealmOfType(Administrator.class) && airline != null;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -44,7 +49,7 @@ public class AdministratorAirlineShowService extends AbstractGuiService<Administ
 
 		typeChoices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "code", "website", "type", "foundationMoment", "email", "phoneNumber");
+		dataset = super.unbindObject(airline, "name", "iataCode", "website", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("types", typeChoices);
 
 		super.getResponse().addData(dataset);

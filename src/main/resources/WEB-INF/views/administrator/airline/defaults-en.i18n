@@ -9,7 +9,7 @@ administrator.airline.list.button.create = Create
 administrator.airline.form.title = airline
 
 administrator.airline.form.label.name = Name:
-administrator.airline.form.label.code = Code:
+administrator.airline.form.label.iataCode = Iata Code:
 administrator.airline.form.label.website = Website:
 administrator.airline.form.label.type = Type:
 administrator.airline.form.label.foundationMoment = Foundation moment:

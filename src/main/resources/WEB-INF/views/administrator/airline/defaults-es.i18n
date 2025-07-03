@@ -9,7 +9,7 @@ administrator.airline.list.button.create = Crear nueva aerolinea
 administrator.airline.form.title = Aerolinea
 
 administrator.airline.form.label.name = Nombre:
-administrator.airline.form.label.code = Código:
+administrator.airline.form.label.iataCode = Código Iata:
 administrator.airline.form.label.website = Página web:
 administrator.airline.form.label.type = Tipo:
 administrator.airline.form.label.foundationMoment = Fecha de fundación:

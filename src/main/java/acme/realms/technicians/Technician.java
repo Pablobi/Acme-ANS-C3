@@ -3,6 +3,8 @@ package acme.realms.technicians;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
+import javax.persistence.Table;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
@@ -11,17 +13,17 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.constraints.ValidTechnicianLicenseNumber;
+import acme.constraints.ValidTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-//@Table(indexes = {
-//	@Index(columnList = "license_number")
-//})
-@ValidTechnicianLicenseNumber
+@Table(indexes = {
+	@Index(columnList = "licenseNumber")
+})
+@ValidTechnician
 public class Technician extends AbstractRole {
 
 	// Serialisation identifier
@@ -31,12 +33,12 @@ public class Technician extends AbstractRole {
 	// Attributes
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{validation.technicians.licenseNumber}")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Column(unique = true)
 	private String				licenseNumber;
 
 	@Mandatory
-	@ValidString(pattern = "^\\+?\\d{6,15}$", message = "{validation.technicians.phoneNumber}")
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
 	private String				phoneNumber;
 

@@ -21,7 +21,23 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		String airlineType;
+
+		if (super.getRequest().getMethod().equals("GET"))
+			status = true;
+		else {
+			airlineType = super.getRequest().getData("type", String.class);
+			status = false;
+
+			for (AirlineType aType : AirlineType.values())
+				if (airlineType.toLowerCase().trim().equals(aType.toString().toLowerCase().trim()) || airlineType.equals("0")) {
+					status = true;
+					break;
+				}
+		}
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -37,7 +53,7 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 
 	@Override
 	public void bind(final Airline airline) {
-		super.bindObject(airline, "name", "code", "website", "type", "foundationMoment", "email", "phoneNumber");
+		super.bindObject(airline, "name", "iataCode", "website", "type", "foundationMoment", "email", "phoneNumber");
 	}
 
 	@Override
@@ -60,7 +76,7 @@ public class AdministratorAirlineUpdateService extends AbstractGuiService<Admini
 
 		typeChoices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "code", "website", "type", "foundationMoment", "email", "phoneNumber");
+		dataset = super.unbindObject(airline, "name", "iataCode", "website", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("types", typeChoices);
 
 		super.getResponse().addData(dataset);
