@@ -4,10 +4,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="administrator.aircraft.list.label.registrationNumber" path="registrationNumber" width="15%"/>
-	<acme:list-column code="administrator.aircraft.list.label.capacity" path="capacity" width="15%"/>
-	<acme:list-column code="administrator.aircraft.list.label.status" path="status" width="15%"/>
-	<acme:list-column code="administrator.aircraft.list.label.airline" path="airline" width="15%"/>
+	<acme:list-column code="administrator.airline.list.label.name" path="name" width="15%"/>
+	<acme:list-column code="administrator.airline.list.label.foundationMoment" path="foundationMoment" width="15%"/>
+	<acme:list-column code="administrator.airline.list.label.type" path="type" width="15%"/>
 </acme:list>
 
-<acme:button code="administrator.aircraft.list.button.create" action="/administrator/aircraft/create"/>
+<acme:button code="administrator.airline.list.button.create" action="/administrator/airline/create"/>

@@ -1,9 +1,8 @@
 administrator.airline.list.title = Listing of airlines
 
-administrator.airline.list.label.registrationNumber = RegistrationNumber:
-administrator.airline.list.label.capacity = Capacity:
-administrator.airline.list.label.status = Status:
-administrator.airline.list.label.airline = Airline:
+administrator.airline.list.label.name = Name:
+administrator.airline.list.label.foundationMoment = Foundation moment:
+administrator.airline.list.label.type = Type:
 
 administrator.airline.list.button.create = Create
 
