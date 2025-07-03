@@ -39,7 +39,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		else if (trackingLog.getPercentage() == 100.00) {
 
 			if (trackingLog.getStatus() == null)
-				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+				super.state(context, trackingLog.getStatus() != null, "status", "javax.validation.constraints.NotNull.message");
 			else {
 				boolean onlyAcceptedOrRejected;
 				onlyAcceptedOrRejected = trackingLog.getStatus().equals(ClaimStatus.ACCEPTED) || trackingLog.getStatus().equals(ClaimStatus.REJECTED);
@@ -51,7 +51,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 		} else if (trackingLog.getPercentage() < 100.00) {
 			if (trackingLog.getStatus() == null)
-				super.state(context, trackingLog.getStatus() != null, "status", "agent.claim.form.error.status-not-null");
+				super.state(context, trackingLog.getStatus() != null, "status", "javax.validation.constraints.NotNull.message");
 			else {
 				boolean onlyPending;
 				onlyPending = trackingLog.getStatus().equals(ClaimStatus.PENDING);
@@ -61,13 +61,14 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			if (trackingLog.isDraftMode() == false) {
 				boolean ascending;
 
-				if (this.repository.findTrackingLogsByMasterId(trackingLog.getClaim().getId()).size() > 0) {
+				if (this.repository.findPublishedTrackingLogsByMasterId(trackingLog.getClaim().getId()).size() > 1) {
 
 					TrackingLog actualMax = this.repository.findPublishedTrackingLogsOrderedByPercentage(trackingLog.getClaim().getId()).get(0);
 					if (trackingLog.getPercentage() == 100.00)
 						ascending = trackingLog.getPercentage() >= actualMax.getPercentage();
 					else
 						ascending = trackingLog.getPercentage() > actualMax.getPercentage();
+					System.out.print(actualMax.getPercentage());
 				} else
 					ascending = true;
 				super.state(context, ascending, "percentage", "validation.trackingLog.ascending-percentage.message");

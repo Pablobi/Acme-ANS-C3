@@ -50,6 +50,7 @@ public class AgentValidator extends AbstractValidator<ValidAgent, Agent> {
 			boolean initialsLikeName;
 
 			initialsLikeName = code != null && code.startsWith(initials);
+
 			super.state(context, initialsLikeName, "employeeCode", "validation.agent.codeInitials");
 		}
 		result = !super.hasErrors(context);
@@ -63,7 +64,7 @@ public class AgentValidator extends AbstractValidator<ValidAgent, Agent> {
 		String surname = agent.getUserAccount().getIdentity().getSurname().trim();
 
 		if (name != null && surname != null)
-			initials = name.substring(0, 1) + surname.substring(0, 1);
+			initials = name.substring(0, 1).toUpperCase() + surname.substring(0, 1).toUpperCase();
 
 		return initials;
 	}
