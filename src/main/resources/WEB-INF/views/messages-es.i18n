@@ -44,6 +44,7 @@ validation.technician.licenseNumberNotUnique = El número de licencia tiene que 
 
 validation.agent.codeInitials = El códido debe empezar con las iniciales del nombre y apellido del empleado
 validation.agent.codeNotUnique = El código debe de ser único
+validation.agent.code = El código debe poseer 2 o 3 letras mayúsculas, seguidas de 6 dígitos
 
 validation.task.priority = La prioridad tiene que ser un número entre 0 y 10
 validation.task.estimatedDuration = La duración estimada debe ser un número entre 0 y 1000
