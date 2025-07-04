@@ -43,6 +43,9 @@ public class AgentValidator extends AbstractValidator<ValidAgent, Agent> {
 				uniqueAgent = existingAgent == null || existingAgent.equals(agent);
 
 				super.state(context, uniqueAgent, "ticker", "acme.validation.agent.codeNotUnique");
+
+				if (!agent.getEmployeeCode().matches("^[A-Z]{2,3}\\d{6}$"))
+					super.state(context, false, "employeeCode", "validation.agent.code");
 			}
 
 			String initials = this.getInitials(agent);
