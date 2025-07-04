@@ -10,6 +10,8 @@ validation.airline.code = The code of an airline must follow the pattern of 3 ca
 validation.airline.phoneNumber = The phone number must follow the pattern of an optional + symbol and between 6 and 15 consecutive digits
 validation.agent.codeInitials = The agent code must start with the initials of the name and surname of the employee
 validation.agent.codeNotUnique = The agent code must be unique
+validation.agent.code = The agent code must have 2 or 3 upper case letters, followed by 6 digits
+
 validation.claim.leg.arrival-message = The leg must have finished
 validation.claim.leg.not-published-flight-message = Its leg's flight must be published
 validation.trackingLog.mandatory-Resolution.message = The resolution of an accepted or rejected log can not be null
