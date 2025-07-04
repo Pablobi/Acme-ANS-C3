@@ -16,7 +16,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-    <acme:input-textbox code="administrator.airport.form.label.code" path="iataCode" placeholder="Three UperCase Letters"/>
+    <acme:input-textbox code="administrator.airport.form.label.code" path="iataCode" placeholder="ABC"/>
 	<acme:input-textbox code="administrator.airport.form.label.name" path="name"/>	
 	<acme:input-select code="administrator.airport.form.label.operationalScope" path="operationalScope"  choices="${operationalScopes}"/>
 	<acme:input-textbox code="administrator.airport.form.label.city" path="city"/>	

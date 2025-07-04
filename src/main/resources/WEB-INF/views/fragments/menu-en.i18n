@@ -51,6 +51,7 @@ master.menu.customer.list-passenger = List Passengers
 master.menu.flightCrewMember = Flight Crew Member
 master.menu.flightCrewMember.list-completedFlightAssignments = List completed flight assignments
 master.menu.flightCrewMember.list-uncompletedFlightAssignments = List uncompleted flight assignments
+master.menu.flightCrewMember.show-dashboard = Show dashboard
 master.menu.flightCrewMember.list-activityLog = List activity logs
 
 # master.menu.manager ##########################################################
@@ -70,6 +71,11 @@ master.menu.technician = Technician
 master.menu.technician.list-my-maintenance-records = List my maintenance records
 master.menu.technician.list-my-tasks = List my tasks
 
+# master.menu.authenticated #######################################################
+
+master.menu.authenticated = Authenticated
+master.menu.authenticated.list-flight-assignments = List all published flight assignments
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
@@ -82,3 +88,5 @@ master.menu.user-account.become-manager = Become a manager
 master.menu.user-account.manager-profile = Manager profile
 master.menu.user-account.become-agent = Become an assistance agent
 master.menu.user-account.agent-profile = Agent profile
+master.menu.user-account.become-flight-crew-member = Become a flight crew member
+master.menu.user-account.flight-crew-member-profile = Flight crew member profile

@@ -8,12 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-administrator.dashboard.form.title = Administrator dashboard
 
-administrator.dashboard.form.title.general-indicators = General indicators
-administrator.dashboard.form.title.application-statuses = Application statuses  
 
-administrator.dashboard.form.label.average-number-jobs-employer =  Average number of jobs per employer
-administrator.dashboard.form.label.average-number-applications-worker =  Average number of applications per worker
-administrator.dashboard.form.label.average-number-applications-employer = Average number of applications per employer
+administrator.agent-dashboard.form.title.general-indicators = General indicators
+administrator.agent-dashboard.form.label.average-number-tracking-logs-agent = Average tracking logs number
+administrator.agent-dashboard.form.label.deviation-number-tracking-logs-agent = Deviation of tracking logs number
+administrator.agent-dashboard.form.label.max-number-tracking-logs-agent = Maximum of tracking logs number
+administrator.agent-dashboard.form.label.min-number-tracking-logs-agent = Minimum of tracking logs number
+administrator.agent-dashboard.form.title.application-statuses = Application statuses
 

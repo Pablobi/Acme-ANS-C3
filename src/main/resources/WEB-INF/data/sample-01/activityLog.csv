@@ -1,0 +1,7 @@
+key,registrationMoment,typeOfIncident,description,severityLevel,key:assignment,draftMode
+#registrationMoment variations
+activityLog-30,2018/10/02 02:15,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-31,2012/07/02 04:31,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+activityLog-32,2025/01/01 00:00,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,TRUE
+#draftMode variations
+activityLog-33,2024/12/31 23:59,Lorem ipsum dolor sit ame,Lorem ipsum dolor sit amet  consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,5,assignment-01,FALSE

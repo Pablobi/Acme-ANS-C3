@@ -11,7 +11,7 @@
 administrator.announcement.form.title = Detalles de anuncios
 administrator.announcement.list.title = Lista de anuncios
 
-administrator.claim.form.label.moment = Momentp:
+administrator.claim.form.label.moment = Momento:
 administrator.claim.form.label.type = Tipo:
 administrator.claim.form.label.email = Email:
 administrator.claim.form.label.description = Descripción:
@@ -23,5 +23,9 @@ administrator.announcement.form.button.create = Crear
 administrator.announcement.list.label.moment = Momento
 administrator.announcement.list.label.status = Estado
 administrator.announcement.list.label.title = Título
+
+administrator.claim.list.label.moment = Momento
+administrator.claim.list.label.type = Tipo
+administrator.claim.list.label.email = Email
 
 administrator.announcement.list.button.create = Crear

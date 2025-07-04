@@ -35,7 +35,7 @@ public class Leg extends AbstractEntity {
 
 	// Attributes
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$", message = "{validation.leg.flightNumber}")
 	@Column(unique = true)
 	private String				flightNumber;
 
