@@ -34,7 +34,7 @@ public class Agent extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
+	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "{validation.agent.code}")
 	@Column(unique = true)
 	private String				employeeCode;
 
