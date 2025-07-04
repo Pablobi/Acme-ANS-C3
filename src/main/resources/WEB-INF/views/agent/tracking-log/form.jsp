@@ -30,7 +30,7 @@
 	
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true && draftModeMaster == false}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true && draftModeMaster == false}">
 			<acme:submit code="agent.tracking-log.form.button.update" action="/agent/tracking-log/update"/>
 			<acme:submit code="agent.tracking-log.form.button.delete" action="/agent/tracking-log/delete"/>
 			<acme:submit code="agent.tracking-log.form.button.publish" action="/agent/tracking-log/publish"/>

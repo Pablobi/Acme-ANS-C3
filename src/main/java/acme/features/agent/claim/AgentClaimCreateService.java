@@ -30,7 +30,27 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Integer legId;
+		Integer id;
+		Leg leg;
+		boolean status;
+
+		if (super.getRequest().getMethod().equals("POST")) {
+			legId = super.getRequest().getData("leg", Integer.class);
+			id = super.getRequest().getData("id", Integer.class);
+			if (id != 0)
+				super.getResponse().setAuthorised(false);
+			else if (legId != null) {
+				if (legId != 0) {
+					leg = this.repository.findLegById(legId);
+					status = leg != null && !leg.getFlight().isDraftMode() && leg.getScheduledArrival().before(MomentHelper.getCurrentMoment());
+					super.getResponse().setAuthorised(status);
+				} else
+					super.getResponse().setAuthorised(true);
+			} else
+				super.getResponse().setAuthorised(false);
+		} else
+			super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -87,7 +107,7 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 		choicesStatus = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		choicesType = SelectChoices.from(ClaimType.class, claim.getType());
 
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllLegs(MomentHelper.getCurrentMoment());
 		choicesLegs = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
 		dataset = super.unbindObject(claim, "moment", "email", "description", "type", "draftMode");
