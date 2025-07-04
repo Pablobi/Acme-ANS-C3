@@ -57,8 +57,16 @@ public class TechnicianInvolvesShowService extends AbstractGuiService<Technician
 
 		choices = SelectChoices.from(TaskType.class, involves.getTask().getTaskType());
 
-		dataset = super.unbindObject(involves, "task.taskType", "task.description", "task.priority", "task.estimatedDuration", "task.technician");
+		dataset = super.unbindObject(involves);
 		dataset.put("types", choices);
+		dataset.put("taskType", involves.getTask().getTaskType());
+		dataset.put("description", involves.getTask().getDescription());
+		dataset.put("priority", involves.getTask().getPriority());
+		dataset.put("estimatedDuration", involves.getTask().getEstimatedDuration());
+		dataset.put("draftMode", involves.getTask().getDraftMode());
+		dataset.put("task", involves.getTask());
+		dataset.put("version", involves.getTask().getVersion());
+		//		dataset.put("taskId", involves.getTask().getId());
 
 		super.getResponse().addData(dataset);
 	}

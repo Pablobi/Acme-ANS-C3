@@ -38,6 +38,19 @@ public class AdministratorAircraftDeleteService extends AbstractGuiService<Admin
 	}
 
 	@Override
+	public void bind(final Aircraft aircraft) {
+		Airline airline = null;
+
+		Integer airlineId = super.getRequest().getData("airline", Integer.class);
+
+		if (airlineId != null)
+			airline = this.repository.findAirlineById(airlineId);
+
+		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeigth", "status", "details");
+		aircraft.setAirline(airline);
+	}
+
+	@Override
 	public void validate(final Aircraft aircraft) {
 		boolean confirmation;
 

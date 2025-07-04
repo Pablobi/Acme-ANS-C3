@@ -24,6 +24,7 @@ master.menu.administrator = Administrador
 master.menu.administrator.list-user-accounts = Ver cuentas de usuario
 master.menu.administrator.list-airports = Lista de aeropuertos
 master.menu.administrator.list-aircrafts = Ver aviones
+master.menu.administrator.list-airlines = Ver aerolineas
 master.menu.administrator.list-claims = Ver reclamaciones publicadas
 master.menu.administrator.show-agent-dashboard = Dashboard de agentes
 master.menu.administrator.populate-db-initial = Poblar BD (inicial)

@@ -24,6 +24,7 @@ master.menu.administrator = Administrator
 master.menu.administrator.list-user-accounts = List user accounts
 master.menu.administrator.list-airports = List of airports
 master.menu.administrator.list-aircrafts = List aircrafts
+master.menu.administrator.list-airlines = List airlines
 master.menu.administrator.list-claims = List of Published Claims
 master.menu.administrator.show-agent-dashboard = Agent Dashboard
 master.menu.administrator.populate-db-initial = Populate DB (initial)
