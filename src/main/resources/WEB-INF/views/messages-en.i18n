@@ -1,7 +1,7 @@
 # messages-en.i18n
 
 validation.manager.identifierNumber = The identifier number must follow the pattern ^[A-Z]{2,3}\d{6}$
-
+validation.agent.identifierNumber = The agent code must have 2 or 3 upper case letters, followed by 6 digits
 
 validation.airport.code = The code of an airport must follow the pattern ^[A-Z]{3}$
 validation.airport.contactPhoneNumber = The contact phone number must follow the pattern ^\\+?\\d{6,15}$

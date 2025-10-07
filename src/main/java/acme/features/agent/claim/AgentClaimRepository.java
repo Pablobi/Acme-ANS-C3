@@ -3,6 +3,7 @@ package acme.features.agent.claim;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,7 @@ public interface AgentClaimRepository extends AbstractRepository {
 	@Query("select c.leg from Claim c where c.id = :id")
 	Leg findLegByClaimId(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.scheduledArrival < :now AND l.flight.draftMode = false")
+	@Query("SELECT l FROM Leg l WHERE l.scheduledArrival < :now AND l.flight.draftMode = false AND l.draftMode = false")
 	Collection<Leg> findAllLegs(Date now);
 
 	@Query("select l from Leg l where l.id = :id")
@@ -32,5 +33,8 @@ public interface AgentClaimRepository extends AbstractRepository {
 
 	@Query("select t from TrackingLog t where t.claim.id = :claimId")
 	Collection<TrackingLog> findTrackingLogsByClaimId(int claimId);
+
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId AND t.percentage = 100.00")
+	List<TrackingLog> findTrackingLogsByClaimIdCompleted(int claimId);
 
 }

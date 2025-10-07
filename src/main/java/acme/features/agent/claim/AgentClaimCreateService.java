@@ -43,7 +43,7 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 			else if (legId != null) {
 				if (legId != 0) {
 					leg = this.repository.findLegById(legId);
-					status = leg != null && !leg.getFlight().isDraftMode() && leg.getScheduledArrival().before(MomentHelper.getCurrentMoment());
+					status = leg != null && !leg.getFlight().isDraftMode() && !leg.isDraftMode() && leg.getScheduledArrival().before(MomentHelper.getCurrentMoment());
 					super.getResponse().setAuthorised(status);
 				} else
 					super.getResponse().setAuthorised(true);
