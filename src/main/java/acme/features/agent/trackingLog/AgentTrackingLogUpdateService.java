@@ -38,6 +38,20 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 		status = claim != null && trackingLog.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
+		String cStatus;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = true;
+		else {
+			cStatus = super.getRequest().getData("status", String.class);
+			status = false;
+
+			for (ClaimStatus st : ClaimStatus.values())
+				if (cStatus.toLowerCase().trim().equals(st.toString().toLowerCase().trim()) || cStatus.equals("0")) {
+					status = true;
+					break;
+				}
+		}
+
 		super.getResponse().setAuthorised(status);
 	}
 

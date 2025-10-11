@@ -15,6 +15,7 @@ import acme.entities.claims.Claim;
 import acme.entities.claims.ClaimStatus;
 import acme.entities.claims.ClaimType;
 import acme.entities.flights.Leg;
+import acme.entities.task.TaskType;
 import acme.realms.agents.Agent;
 
 @GuiService
