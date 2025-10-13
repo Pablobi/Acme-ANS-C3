@@ -64,7 +64,6 @@ validation.flightAssignment.legNotPublished = The associated leg has to be publi
 
 validation.leg.flightNumber = The flightNumber must follow the pattern of 3 capital letters(the airline IATA code) and 4 consecutive digits
 
-
 acme.validation.validShortText = Must be less than 50 characters
 acme.validation.validLongText = Must be less than 255 characters
 

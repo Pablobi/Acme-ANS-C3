@@ -25,7 +25,7 @@ public interface AgentClaimRepository extends AbstractRepository {
 	@Query("select c.leg from Claim c where c.id = :id")
 	Leg findLegByClaimId(int id);
 
-	@Query("SELECT l FROM Leg l WHERE l.scheduledArrival < :now AND l.flight.draftMode = false AND l.draftMode = false")
+	@Query("SELECT l FROM Leg l WHERE l.scheduledArrival < :now AND l.draftMode = false")
 	Collection<Leg> findAllLegs(Date now);
 
 	@Query("select l from Leg l where l.id = :id")

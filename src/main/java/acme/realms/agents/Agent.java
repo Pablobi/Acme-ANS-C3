@@ -9,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.datatypes.Money;
@@ -18,6 +17,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import acme.constraints.ValidAgent;
 import acme.constraints.ValidLongText;
@@ -34,7 +34,7 @@ public class Agent extends AbstractRole {
 	private static final long	serialVersionUID	= 1L;
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$", message = "The agent code must have 2 or 3 upper case letters, followed by 6 digits\r\n")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$", message = "{validation.agent.code}")
 	@Column(unique = true)
 	private String				employeeCode;
 
