@@ -15,7 +15,6 @@ import acme.entities.claims.Claim;
 import acme.entities.claims.ClaimStatus;
 import acme.entities.claims.ClaimType;
 import acme.entities.flights.Leg;
-import acme.entities.task.TaskType;
 import acme.realms.agents.Agent;
 
 @GuiService
@@ -35,6 +34,20 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 		Integer id;
 		Leg leg;
 		boolean status;
+
+		String cType;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = true;
+		else {
+			cType = super.getRequest().getData("type", String.class);
+			status = false;
+
+			for (ClaimType ct : ClaimType.values())
+				if (cType.toLowerCase().trim().equals(ct.toString().toLowerCase().trim()) || cType.equals("0")) {
+					status = true;
+					break;
+				}
+		}
 
 		if (super.getRequest().getMethod().equals("POST")) {
 			legId = super.getRequest().getData("leg", Integer.class);

@@ -37,6 +37,20 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 
 		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(agent);
 
+		String cType;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = true;
+		else {
+			cType = super.getRequest().getData("type", String.class);
+			status = false;
+
+			for (ClaimType ct : ClaimType.values())
+				if (cType.toLowerCase().trim().equals(ct.toString().toLowerCase().trim()) || cType.equals("0")) {
+					status = true;
+					break;
+				}
+		}
+
 		if (status && super.getRequest().getMethod().equals("POST")) {
 			Integer legId = super.getRequest().getData("leg", Integer.class);
 			if (legId != null) {
