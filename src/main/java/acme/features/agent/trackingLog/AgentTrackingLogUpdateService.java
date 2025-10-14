@@ -29,6 +29,7 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean status2;
 		int trackingLogId;
 		Claim claim;
 		TrackingLog trackingLog;
@@ -40,19 +41,19 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 
 		String cStatus;
 		if (super.getRequest().getMethod().equals("GET"))
-			status = true;
+			status2 = true;
 		else {
 			cStatus = super.getRequest().getData("status", String.class);
-			status = false;
+			status2 = false;
 
 			for (ClaimStatus st : ClaimStatus.values())
 				if (cStatus.toLowerCase().trim().equals(st.toString().toLowerCase().trim()) || cStatus.equals("0")) {
-					status = true;
+					status2 = true;
 					break;
 				}
 		}
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(status && status2);
 	}
 
 	@Override
