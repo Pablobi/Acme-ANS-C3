@@ -34,37 +34,40 @@ public class AgentClaimCreateService extends AbstractGuiService<Agent, Claim> {
 		Integer id;
 		Leg leg;
 		boolean status;
-
-		String cType;
-		if (super.getRequest().getMethod().equals("GET"))
-			status = true;
-		else {
-			cType = super.getRequest().getData("type", String.class);
-			status = false;
-
-			for (ClaimType ct : ClaimType.values())
-				if (cType.toLowerCase().trim().equals(ct.toString().toLowerCase().trim()) || cType.equals("0")) {
-					status = true;
-					break;
-				}
-		}
+		boolean status2;
 
 		if (super.getRequest().getMethod().equals("POST")) {
 			legId = super.getRequest().getData("leg", Integer.class);
 			id = super.getRequest().getData("id", Integer.class);
 			if (id != 0)
-				super.getResponse().setAuthorised(false);
+				status = false;
 			else if (legId != null) {
 				if (legId != 0) {
 					leg = this.repository.findLegById(legId);
 					status = leg != null && !leg.isDraftMode() && leg.getScheduledArrival().before(MomentHelper.getCurrentMoment());
-					super.getResponse().setAuthorised(status);
 				} else
-					super.getResponse().setAuthorised(true);
+					status = true;
 			} else
-				super.getResponse().setAuthorised(false);
+				status = false;
 		} else
-			super.getResponse().setAuthorised(true);
+			status = true;
+
+		String cType;
+		if (super.getRequest().getMethod().equals("GET"))
+			status2 = true;
+		else {
+			cType = super.getRequest().getData("type", String.class);
+			status2 = false;
+
+			for (ClaimType ct : ClaimType.values())
+				if (cType.toLowerCase().trim().equals(ct.toString().toLowerCase().trim()) || cType.equals("0")) {
+					status2 = true;
+					break;
+				}
+		}
+
+		super.getResponse().setAuthorised(status && status2);
+
 	}
 
 	@Override
