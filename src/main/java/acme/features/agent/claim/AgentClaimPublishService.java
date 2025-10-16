@@ -39,7 +39,7 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 
 		String cType;
 		if (super.getRequest().getMethod().equals("GET"))
-			status = true;
+			status = false;
 		else {
 			cType = super.getRequest().getData("type", String.class);
 			status = false;
