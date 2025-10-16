@@ -4,9 +4,7 @@ package acme.entities.claims;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.persistence.Index;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -29,9 +27,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidClaim
-@Table(indexes = {
-	@Index(columnList = "id"), @Index(columnList = "agent_id")
-})
+
 public class Claim extends AbstractEntity {
 
 	private static final long	serialVersionUID	= 1L;
@@ -70,10 +66,10 @@ public class Claim extends AbstractEntity {
 		TrackingLogRepository repository;
 
 		repository = SpringHelper.getBean(TrackingLogRepository.class);
-		Integer size = repository.findTrackingLogsByMasterId(this.getId()).size();
+		Integer size = repository.findPublishedTrackingLogsByMasterId(this.getId()).size();
 
 		if (size > 0)
-			result = repository.findTrackingLogsOrderedByPercentage(this.getId()).get(0).getStatus();
+			result = repository.findPublishedTrackingLogsOrderedByPercentage(this.getId()).get(0).getStatus();
 		else
 			result = ClaimStatus.PENDING;
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claims.Claim;
@@ -28,6 +29,7 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 		int masterId;
 		Claim claim;
 		Agent agent;
+		Leg leg;
 
 		masterId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(masterId);
@@ -35,7 +37,36 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 
 		status = claim != null && claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(agent);
 
-		super.getResponse().setAuthorised(status);
+		String cType;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		else {
+			cType = super.getRequest().getData("type", String.class);
+			status = false;
+
+			for (ClaimType ct : ClaimType.values())
+				if (cType.toLowerCase().trim().equals(ct.toString().toLowerCase().trim()) || cType.equals("0")) {
+					status = true;
+					break;
+				}
+		}
+
+		if (status && super.getRequest().getMethod().equals("POST")) {
+			Integer legId = super.getRequest().getData("leg", Integer.class);
+			if (legId != null) {
+				if (legId != 0) {
+					leg = this.repository.findLegById(legId);
+					status = leg != null && !leg.isDraftMode() && leg.getScheduledArrival().before(MomentHelper.getCurrentMoment());
+					super.getResponse().setAuthorised(status);
+				} else
+					status = true;
+				super.getResponse().setAuthorised(status);
+			} else
+				status = false;
+			super.getResponse().setAuthorised(status);
+		} else
+			super.getResponse().setAuthorised(false);
+
 	}
 
 	@Override
@@ -87,7 +118,7 @@ public class AgentClaimPublishService extends AbstractGuiService<Agent, Claim> {
 		choicesStatus = SelectChoices.from(ClaimStatus.class, claim.getStatus());
 		choicesType = SelectChoices.from(ClaimType.class, claim.getType());
 
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllLegs(MomentHelper.getCurrentMoment());
 		choicesLegs = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 
 		dataset = super.unbindObject(claim, "moment", "email", "description", "type", "draftMode");

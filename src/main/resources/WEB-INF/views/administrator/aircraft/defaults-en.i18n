@@ -20,5 +20,5 @@ administrator.aircraft.form.label.details = Details:
 administrator.aircraft.form.button.update = Update
 administrator.aircraft.form.button.delete = Delete
 administrator.aircraft.form.button.create = Create aircraft
-administrator.aricraft.form.button.disable = Disable
+administrator.aircraft.form.button.disable = Disable
 administrator.aircraft.form.label.confirmation = Confirm

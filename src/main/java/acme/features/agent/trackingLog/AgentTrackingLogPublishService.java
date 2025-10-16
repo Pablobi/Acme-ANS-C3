@@ -27,14 +27,30 @@ public class AgentTrackingLogPublishService extends AbstractGuiService<Agent, Tr
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean status2;
 		int trackingLogId;
 		Claim claim;
 		TrackingLog trackingLog;
 
-		trackingLogId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimByTrackingLogId(trackingLogId);
-		trackingLog = this.repository.findTrackingLogById(trackingLogId);
-		status = claim != null && trackingLog.isDraftMode() && !claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
+		String cStatus;
+		if (super.getRequest().getMethod().equals("GET"))
+			status = false;
+		else {
+			trackingLogId = super.getRequest().getData("id", int.class);
+			claim = this.repository.findClaimByTrackingLogId(trackingLogId);
+			trackingLog = this.repository.findTrackingLogById(trackingLogId);
+
+			cStatus = super.getRequest().getData("status", String.class);
+			status2 = false;
+
+			for (ClaimStatus st : ClaimStatus.values())
+				if (cStatus.toLowerCase().trim().equals(st.toString().toLowerCase().trim()) || cStatus.equals("0")) {
+					status2 = true;
+					break;
+				}
+			status = claim != null && trackingLog.isDraftMode() && !claim.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent()) && status2;
+
+		}
 
 		super.getResponse().setAuthorised(status);
 	}

@@ -34,6 +34,11 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 			taskId = super.getRequest().getData("id", int.class);
 			task = this.repository.findTaskById(taskId);
 
+			if (task == null) {
+				task = this.repository.findInvolvesById(taskId).getTask();
+				task.setId(this.repository.findInvolvesById(taskId).getTask().getId());
+			}
+
 			technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			technician = this.repository.findTechnicianById(technicianId);
 
@@ -60,6 +65,11 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 		id = super.getRequest().getData("id", int.class);
 		task = this.repository.findTaskById(id);
 
+		if (task == null) {
+			task = this.repository.findInvolvesById(id).getTask();
+			task.setId(this.repository.findInvolvesById(id).getTask().getId());
+		}
+
 		super.getBuffer().addData(task);
 	}
 
@@ -67,11 +77,14 @@ public class TechnicianTaskPublishService extends AbstractGuiService<Technician,
 	public void bind(final Task task) {
 		int technicianId;
 		Technician technician;
+		int originalTaskId;
 
 		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		technician = this.repository.findTechnicianById(technicianId);
+		originalTaskId = task.getId();
 		super.bindObject(task, "taskType", "description", "priority", "estimatedDuration");
 		task.setTechnician(technician);
+		task.setId(originalTaskId);
 	}
 
 	@Override

@@ -29,6 +29,7 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 	@Override
 	public void authorise() {
 		boolean status;
+		boolean status2;
 		int trackingLogId;
 		Claim claim;
 		TrackingLog trackingLog;
@@ -38,7 +39,21 @@ public class AgentTrackingLogUpdateService extends AbstractGuiService<Agent, Tra
 		trackingLog = this.repository.findTrackingLogById(trackingLogId);
 		status = claim != null && trackingLog.isDraftMode() && super.getRequest().getPrincipal().hasRealm(claim.getAgent());
 
-		super.getResponse().setAuthorised(status);
+		String cStatus;
+		if (super.getRequest().getMethod().equals("GET"))
+			status2 = true;
+		else {
+			cStatus = super.getRequest().getData("status", String.class);
+			status2 = false;
+
+			for (ClaimStatus st : ClaimStatus.values())
+				if (cStatus.toLowerCase().trim().equals(st.toString().toLowerCase().trim()) || cStatus.equals("0")) {
+					status2 = true;
+					break;
+				}
+		}
+
+		super.getResponse().setAuthorised(status && status2);
 	}
 
 	@Override
